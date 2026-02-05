@@ -39,18 +39,15 @@
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     
     <script type="importmap">
-{
-  "imports": {
-    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
-    "lucide-react": "https://esm.sh/lucide-react@^0.563.0",
-    "react": "https://esm.sh/react@^19.2.4",
-    "firebase/app": "https://esm.sh/firebase@10.8.0/app",
-    "firebase/analytics": "https://esm.sh/firebase@10.8.0/analytics",
-    "react/": "https://esm.sh/react@^19.2.4/",
-    "firebase/": "https://esm.sh/firebase@^12.9.0/"
-  }
-}
-</script>
+    {
+      "imports": {
+        "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+        "lucide-react": "https://esm.sh/lucide-react@^0.563.0",
+        "react": "https://esm.sh/react@^19.2.4",
+        "react/": "https://esm.sh/react@^19.2.4/"
+      }
+    }
+    </script>
 </head>
   <body class="antialiased scroll-smooth">
     <div id="root"></div>
@@ -59,23 +56,6 @@
       import React, { useState, useEffect } from 'react';
       import { createRoot } from 'react-dom/client';
       import { ChevronDown, Twitter, Instagram, Mail, Scroll, Sword, Ghost, Brain, Sparkles, HandMetal, X } from 'lucide-react';
-      import { initializeApp } from "firebase/app";
-      import { getAnalytics } from "firebase/analytics";
-
-      // --- FIREBASE CONFIG ---
-      const firebaseConfig = {
-        apiKey: "AIzaSyCVnAeZjS1lLi4UeRsM3SUYtpR9XUFDPuA",
-        authDomain: "artum-ub.firebaseapp.com",
-        projectId: "artum-ub",
-        storageBucket: "artum-ub.firebasestorage.app",
-        messagingSenderId: "922846354277",
-        appId: "1:922846354277:web:39a2ae78c23b59bda45f8c",
-        measurementId: "G-YBBPMWWGTS"
-      };
-
-      // Initialize Firebase
-      const app = initializeApp(firebaseConfig);
-      const analytics = getAnalytics(app);
 
       // --- CONSTANTS ---
       const ASSETS = {
