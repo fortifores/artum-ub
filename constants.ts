@@ -42,7 +42,7 @@ export const CONTENT = {
     {
       id: 1,
       title: "Interessante Mekanikker",
-      description: "Unike spillsystemer som utfordrer sinnet og belønner kreativitet.",
+      description: "Et unikt spillsystem som utfordrer sinnet og belønner kreativiteten.",
       icon: "mechanic"
     },
     {
