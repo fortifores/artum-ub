@@ -34,6 +34,13 @@
       ::-webkit-scrollbar-thumb:hover {
         background: #57534e;
       }
+      @keyframes fade-in-up {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      .animate-fade-in-up {
+        animation: fade-in-up 0.3s ease-out forwards;
+      }
     </style>
     <!-- Babel for in-browser JSX compilation -->
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -53,14 +60,15 @@
     <div id="root"></div>
 
     <script type="text/babel" data-type="module">
-      import React, { useState, useEffect } from 'react';
+      import React, { useState, useEffect, useRef } from 'react';
       import { createRoot } from 'react-dom/client';
-      import { ChevronDown, Twitter, Instagram, Mail, Scroll, Sword, Ghost, Brain, Sparkles, HandMetal, X } from 'lucide-react';
+      import { ChevronDown, Twitter, Instagram, Mail, Scroll, Sword, Ghost, Brain, Sparkles, HandMetal, X, Lock } from 'lucide-react';
 
       // --- CONSTANTS ---
       const ASSETS = {
-        logo: "https://pbs.twimg.com/media/HAaQsqSXoAAWLx2?format=jpg&name=medium",
+        logo: "https://pbs.twimg.com/media/HAbkHB8WIAAK3tA?format=jpg&name=large",
         heroBg: "https://pbs.twimg.com/media/HAaQr-7XwAExm9B?format=jpg&name=large",
+        gameImg: "https://pbs.twimg.com/media/HAdbgSTWkAA1iYJ?format=jpg&name=large",
         gallery1: "https://pbs.twimg.com/media/HAaBa3dXwAAMicT?format=jpg&name=large",
         gallery2: "https://pbs.twimg.com/media/HAJ_f46X0AA5U49?format=jpg&name=900x900",
       };
@@ -83,6 +91,12 @@
           text1: "Vi er Artum UB, en ungdomsbedrift med lidenskap for spill.",
           text2: "Vi lager et mørkt fantasy-spill med vanedannende og strategisk spilling.",
           text3: "Målet vårt er å kombinere mystikk, eventyr og taktisk tenkning i spillet vårt – perfekt for de som elsker spennende følelser og magiske verdener.",
+        },
+        game: {
+          title: "Vårt Spill",
+          status: "Snart",
+          buttonLabel: "Kjøp og bestill",
+          notification: "Denne funksjonen er for øyeblikket utilgjengelig, og spillet er under utvikling!"
         },
         features: [
           {
@@ -261,6 +275,93 @@
         );
       };
 
+      // Our Game Component
+      const OurGame = () => {
+        const [showNotify, setShowNotify] = useState(false);
+        const [isLightboxOpen, setIsLightboxOpen] = useState(false);
+        const timeoutRef = useRef(null);
+
+        const handleButtonClick = (e) => {
+          e.preventDefault();
+          if (timeoutRef.current) clearTimeout(timeoutRef.current);
+          setShowNotify(true);
+          timeoutRef.current = setTimeout(() => {
+            setShowNotify(false);
+          }, 4000);
+        };
+
+        return (
+          <section id="game" className="py-24 bg-stone-950 relative overflow-hidden border-t border-stone-900">
+             <div className="max-w-5xl mx-auto px-4 text-center">
+                <div className="mb-12">
+                   <h2 className="text-4xl md:text-5xl font-heading font-bold text-stone-100 mb-4 tracking-wider">
+                     {CONTENT.game.title}
+                   </h2>
+                   <div className="w-24 h-1 bg-amber-700 mx-auto rounded-full mb-4"></div>
+                   <p className="font-heading text-amber-600 uppercase tracking-widest text-sm">{CONTENT.game.status}</p>
+                </div>
+
+                <div 
+                  className="relative inline-block group mb-12 cursor-pointer overflow-hidden rounded-sm border border-stone-800"
+                  onClick={() => setIsLightboxOpen(true)}
+                >
+                   <div className="absolute -inset-1 bg-gradient-to-r from-red-900 to-amber-900 rounded-sm blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
+                   <img 
+                    src={ASSETS.gameImg} 
+                    alt="Artum Board Game" 
+                    className="relative rounded-sm max-w-full h-auto md:max-h-[600px] object-cover transition-all duration-700 group-hover:scale-105 grayscale-[0.3] group-hover:grayscale-0"
+                   />
+                   <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500"></div>
+                </div>
+
+                <div className="relative inline-flex flex-col items-center">
+                  {/* Tooltip Notification */}
+                  {showNotify && (
+                    <div className="absolute bottom-full mb-4 w-64 p-4 bg-stone-950 border border-red-900/50 rounded-md shadow-2xl z-20 animate-fade-in-up">
+                      <p className="text-xs text-stone-300 font-light leading-relaxed">
+                        {CONTENT.game.notification}
+                      </p>
+                      <div className="absolute top-full left-1/2 -translate-x-1/2 w-3 h-3 bg-stone-950 border-r border-b border-red-900/50 rotate-45 -mt-1.5"></div>
+                    </div>
+                  )}
+
+                  <button 
+                    onClick={handleButtonClick}
+                    className="group relative flex items-center gap-3 px-10 py-4 bg-stone-900/50 border border-amber-900/20 text-stone-600 font-heading uppercase tracking-widest text-sm cursor-not-allowed overflow-hidden"
+                  >
+                    <Lock size={16} className="text-amber-900/40" />
+                    <span className="relative z-10">{CONTENT.game.buttonLabel}</span>
+                    <div className="absolute inset-0 bg-black/60 pointer-events-none"></div>
+                  </button>
+                  <p className="mt-4 text-xs text-stone-600 italic font-light tracking-wide">Under utvikling</p>
+                </div>
+             </div>
+
+             {/* Lightbox Modal */}
+             {isLightboxOpen && (
+                <div 
+                  className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 backdrop-blur-sm p-4 animate-fade-in"
+                  onClick={() => setIsLightboxOpen(false)}
+                >
+                  <button 
+                    className="absolute top-6 right-6 text-stone-400 hover:text-white transition-colors z-[101]"
+                    onClick={() => setIsLightboxOpen(false)}
+                  >
+                    <X size={32} />
+                  </button>
+                  
+                  <img 
+                    src={ASSETS.gameImg} 
+                    alt="Full game view" 
+                    className="max-h-[90vh] max-w-full object-contain rounded-sm shadow-2xl border border-stone-800"
+                    onClick={(e) => e.stopPropagation()} 
+                  />
+                </div>
+              )}
+          </section>
+        );
+      };
+
       // Features Component
       const Features = () => {
         const getIcon = (type) => {
@@ -273,7 +374,7 @@
         };
 
         return (
-          <section id="features" className="py-24 bg-stone-900 text-stone-200">
+          <section id="features" className="py-24 bg-stone-900 text-stone-200 border-t border-stone-800">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center mb-16">
                 <h2 className="text-3xl md:text-5xl font-heading font-bold text-transparent bg-clip-text bg-gradient-to-r from-stone-200 to-stone-500 mb-4">
@@ -454,6 +555,7 @@
               <About />
               <Features />
               <Gallery />
+              <OurGame />
             </main>
             <Footer />
           </div>
