@@ -252,6 +252,7 @@
 
         useEffect(() => {
           const handleClickOutside = (e) => {
+            if (lockedRef.current) return;
             if (containerRef.current && !containerRef.current.contains(e.target)) {
               setShowVolume(false);
             }
@@ -283,17 +284,20 @@
         };
 
         const longFiredRef = useRef(false);
+        const lockedRef = useRef(false);
 
         const handleTouchStart = (e) => {
           longFiredRef.current = false;
           longPressRef.current = setTimeout(() => {
             longFiredRef.current = true;
-            setShowVolume(prev => !prev);
+            lockedRef.current = true;
+            setShowVolume(true);
+            // Unlock after 3 seconds
+            setTimeout(() => { lockedRef.current = false; }, 3000);
           }, 500);
         };
         const handleTouchEnd = (e) => {
           if (longPressRef.current) clearTimeout(longPressRef.current);
-          // if long press fired, prevent the click (togglePlay) from also firing
           if (longFiredRef.current) {
             e.preventDefault();
             longFiredRef.current = false;
