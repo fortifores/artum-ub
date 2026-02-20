@@ -282,13 +282,22 @@
           if (audioRef.current) audioRef.current.volume = val;
         };
 
+        const longFiredRef = useRef(false);
+
         const handleTouchStart = (e) => {
+          longFiredRef.current = false;
           longPressRef.current = setTimeout(() => {
+            longFiredRef.current = true;
             setShowVolume(prev => !prev);
           }, 500);
         };
-        const handleTouchEnd = () => {
+        const handleTouchEnd = (e) => {
           if (longPressRef.current) clearTimeout(longPressRef.current);
+          // if long press fired, prevent the click (togglePlay) from also firing
+          if (longFiredRef.current) {
+            e.preventDefault();
+            longFiredRef.current = false;
+          }
         };
 
         const volumePercent = Math.round(volume * 100);
@@ -300,7 +309,7 @@
               onContextMenu={handleRightClick}
               onTouchStart={handleTouchStart}
               onTouchEnd={handleTouchEnd}
-              onTouchMove={handleTouchEnd}
+              onTouchMove={() => { if (longPressRef.current) clearTimeout(longPressRef.current); }}
               className="flex items-center justify-center w-8 h-8 md:w-10 md:h-10 rounded-full bg-stone-900/50 border border-stone-800 hover:border-amber-700/50 transition-all duration-300 group shadow-lg select-none"
               aria-label={isPlaying ? "Pause music" : "Play music"}
             >
@@ -404,7 +413,9 @@
                 <span className="font-heading text-lg md:text-2xl font-bold tracking-widest text-stone-200 whitespace-nowrap hidden sm:block">
                   ARTUM <span className="text-amber-600">UB</span>
                 </span>
-                <span className="font-heading text-lg font-bold tracking-widest text-stone-200 whitespace-nowrap sm:hidden">ARTUM</span>
+                <span className="font-heading text-lg font-bold tracking-widest text-stone-200 whitespace-nowrap sm:hidden">
+                  ARTUM <span className="text-amber-600">UB</span>
+                </span>
               </div>
             </div>
 
