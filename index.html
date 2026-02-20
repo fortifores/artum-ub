@@ -4,26 +4,18 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ARTUM-UB - Dark Fantasy Board Games</title>
-    
-    <!-- SEO & Metadata -->
     <meta name="description" content="Artum UB - Utvikler av mørke fantasy-brettspill i Finnsnes, Senja. Fokus på strategi, lagspill og underholdning." />
     <meta name="keywords" content="Brettspill, Artum UB, Dark Fantasy, Strategi, Finnsnes, Senja, Troms, Norge, Aktive, Relasjoner, Teamspill, Underholdning, Moro, Ungdomsbedrift" />
     <meta name="author" content="Artum UB" />
-    
-    <!-- Geo Location -->
     <meta name="geo.region" content="NO-54" />
     <meta name="geo.placename" content="Finnsnes" />
     <meta name="geo.position" content="69.2296;17.9811" />
     <meta name="ICBM" content="69.2296, 17.9811" />
-
-    <!-- Open Graph / Social -->
     <meta property="og:type" content="website" />
     <meta property="og:title" content="ARTUM-UB - Dark Fantasy Board Games" />
     <meta property="og:description" content="Mørk Fantasi. Strategi. Mystikk. En ungdomsbedrift fra Finnsnes, Senja." />
     <meta property="og:url" content="https://artum-ub.kesug.com/" />
     <meta property="og:image" content="https://pbs.twimg.com/media/HAejojiXoAEMDas?format=jpg&name=large" />
-    
-    <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -50,48 +42,25 @@
       ]
     }
     </script>
-
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="canonical" href="https://artum-ub.kesug.com/">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;800&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
-      body {
-        font-family: 'Lato', sans-serif;
-        background-color: #0c0a09; /* warm black */
-        color: #e7e5e4; /* stone-200 */
-      }
-      h1, h2, h3, h4, h5, h6, .font-heading {
-        font-family: 'Cinzel', serif;
-      }
-      .scroll-smooth {
-        scroll-behavior: smooth;
-      }
-      /* Custom scrollbar for dark theme */
-      ::-webkit-scrollbar {
-        width: 10px;
-      }
-      ::-webkit-scrollbar-track {
-        background: #1c1917;
-      }
-      ::-webkit-scrollbar-thumb {
-        background: #44403c;
-        border-radius: 5px;
-      }
-      ::-webkit-scrollbar-thumb:hover {
-        background: #57534e;
-      }
+      body { font-family: 'Lato', sans-serif; background-color: #0c0a09; color: #e7e5e4; }
+      h1, h2, h3, h4, h5, h6, .font-heading { font-family: 'Cinzel', serif; }
+      .scroll-smooth { scroll-behavior: smooth; }
+      ::-webkit-scrollbar { width: 10px; }
+      ::-webkit-scrollbar-track { background: #1c1917; }
+      ::-webkit-scrollbar-thumb { background: #44403c; border-radius: 5px; }
+      ::-webkit-scrollbar-thumb:hover { background: #57534e; }
       @keyframes fade-in-up {
         from { opacity: 0; transform: translateY(10px); }
         to { opacity: 1; transform: translateY(0); }
       }
-      .animate-fade-in-up {
-        animation: fade-in-up 0.3s ease-out forwards;
-      }
-      .dropdown-animate {
-        animation: fadeInScale 0.2s ease-out forwards;
-      }
+      .animate-fade-in-up { animation: fade-in-up 0.3s ease-out forwards; }
+      .dropdown-animate { animation: fadeInScale 0.2s ease-out forwards; }
       @keyframes fadeInScale {
         from { opacity: 0; transform: scale(0.95) translateY(-10px); }
         to { opacity: 1; transform: scale(1) translateY(0); }
@@ -101,23 +70,14 @@
         50% { color: #cf56fb; filter: drop-shadow(0 0 6px #cf56fb); }
         100% { transform: rotate(360deg); color: #36f6fb; filter: drop-shadow(0 0 6px #36f6fb); }
       }
-      .animate-spin-neon {
-        animation: spin-neon 4s linear infinite;
-      }
+      .animate-spin-neon { animation: spin-neon 4s linear infinite; }
       .video-bg {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        z-index: -50;
-        opacity: 0.6; /* Adjust visibility of background video */
+        position: fixed; top: 0; left: 0;
+        width: 100%; height: 100%;
+        object-fit: cover; z-index: -50; opacity: 0.6;
       }
     </style>
-    <!-- Babel for in-browser JSX compilation -->
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    
     <script type="importmap">
     {
       "imports": {
@@ -128,7 +88,8 @@
       }
     }
     </script>
-</head>
+    <link rel="stylesheet" href="/index.css">
+  </head>
   <body class="antialiased scroll-smooth">
     <div id="root"></div>
 
@@ -137,7 +98,6 @@
       import { createRoot } from 'react-dom/client';
       import { ChevronDown, Twitter, Instagram, Mail, Scroll, Sword, Ghost, Brain, Sparkles, HandMetal, X, Lock, Globe, User, Check, Disc } from 'lucide-react';
 
-      // --- CONSTANTS ---
       const ASSETS = {
         logo: "https://pbs.twimg.com/media/HAejojiXoAEMDas?format=jpg&name=large",
         heroBg: "https://pbs.twimg.com/media/HAaQr-7XwAExm9B?format=jpg&name=large",
@@ -162,34 +122,23 @@
             cta: "Se flere detaljer nedenfor",
           },
           about: {
-            title: "Vår Visjon",
-            subtitle: "Hvem er vi?",
+            title: "Vår Visjon", subtitle: "Hvem er vi?",
             text1: "Vi er Artum UB, en ungdomsbedrift med lidenskap for spill.",
             text2: "Vi lager et mørkt fantasy-spill med vanedannende og strategisk spilling.",
             text3: "Målet vårt er å kombinere mystikk, eventyr og tactic tenkning i spillet vårt – perfekt for de som elsker spennende følelser og magiske verdener.",
             tags: ["Mystikk", "Eventyr", "Taktikk"],
             philosophyTitle: "Designfilosofi",
-            philosophy: [
-              "Strategisk dybde uten unødvendig kompleksitet.",
-              "Atmosfærisk design som drar deg inn i verdenen.",
-              "Mekanikker som forteller en historie."
-            ]
+            philosophy: ["Strategisk dybde uten unødvendig kompleksitet.", "Atmosfærisk design som drar deg inn i verdenen.", "Mekanikker som forteller en historie."]
           },
           team: {
-            title: "Vårt Team",
-            subtitle: "Menneskene bak spillet",
+            title: "Vårt Team", subtitle: "Menneskene bak spillet",
             members: [
               { name: "Artem", role: "Leder, støttende (nettstedsutvikler)" },
               { name: "Oleksii", role: "Analytiker, idéutvikler, Finansmann" },
               { name: "Dmytro", role: "Designer, kreativ, idéutvikler" }
             ]
           },
-          game: {
-            title: "Vårt Spill",
-            status: "Snart",
-            buttonLabel: "Kjøp og bestill",
-            notification: "Denne funksjonen er for øyeblikket utilgjengelig, og spillet er under utvikling!"
-          },
+          game: { title: "Vårt Spill", status: "Snart", buttonLabel: "Kjøp og bestill", notification: "Denne funksjonen er for øyeblikket utilgjengelig, og spillet er under utvikling!" },
           features: {
             title: "Hvorfor Velge Våre Spill?",
             items: [
@@ -198,19 +147,8 @@
               { id: 3, title: "Intuitiv Forståelse", description: "Designet for flyt og logikk, slik at du kan fokusere på strategien.", icon: "intuitive" }
             ]
           },
-          gallery: {
-            title: "Galleri",
-            subtitle: "Kunstverk & Atmosfære",
-            item1: { title: "Neste «?» felt", desc: "Hemmelig kort med action" },
-            item2: { title: "Porgas", desc: "Karakterdesign" }
-          },
-          footer: {
-            socialTitle: "Sosiale Medier",
-            contactTitle: "Kontakt Oss",
-            langTitle: "Språk",            
-            rights: "© 2026 Artum UB. Alle rettigheter forbeholdt.",
-            langs: { no: "Norsk", en: "English", ua: "Українська" }
-          }
+          gallery: { title: "Galleri", subtitle: "Kunstverk & Atmosfære", item1: { title: "Neste «?» felt", desc: "Hemmelig kort med action" }, item2: { title: "Porgas", desc: "Karakterdesign" } },
+          footer: { socialTitle: "Sosiale Medier", contactTitle: "Kontakt Oss", langTitle: "Språk", rights: "© 2026 Artum UB. Alle rettigheter forbeholdt.", langs: { no: "Norsk", en: "English", ua: "Українська" } }
         },
         en: {
           nav: { home: "Home", about: "About Us", team: "Our Team", features: "Features", gallery: "Gallery", contact: "Contact" },
@@ -220,34 +158,23 @@
             cta: "See more details below",
           },
           about: {
-            title: "Our Vision",
-            subtitle: "Who are we?",
+            title: "Our Vision", subtitle: "Who are we?",
             text1: "We are Artum UB, a youth company with a passion for games.",
             text2: "We create a dark fantasy game with addictive and strategic gameplay.",
             text3: "Our goal is to combine mystery, adventure, and tactical thinking in our game – perfect for those who love exciting emotions and magical worlds.",
             tags: ["Mystery", "Adventure", "Tactics"],
             philosophyTitle: "Design Philosophy",
-            philosophy: [
-              "Strategic depth without unnecessary complexity.",
-              "Atmospheric design that pulls you into the world.",
-              "Mechanics that tell a story."
-            ]
+            philosophy: ["Strategic depth without unnecessary complexity.", "Atmospheric design that pulls you into the world.", "Mechanics that tell a story."]
           },
           team: {
-            title: "Our Team",
-            subtitle: "The minds behind the game",
+            title: "Our Team", subtitle: "The minds behind the game",
             members: [
               { name: "Artem", role: "Leader, supportive (site developer)" },
               { name: "Oleksii", role: "Analytiker, idéutvikler, Financier" },
               { name: "Dmytro", role: "Designer, creative, idea developer" }
             ]
           },
-          game: {
-            title: "Our Game",
-            status: "Soon",
-            buttonLabel: "Buy and order",
-            notification: "This feature is currently unavailable, and the game is under development!"
-          },
+          game: { title: "Our Game", status: "Soon", buttonLabel: "Buy and order", notification: "This feature is currently unavailable, and the game is under development!" },
           features: {
             title: "Why Choose Our Games?",
             items: [
@@ -256,19 +183,8 @@
               { id: 3, title: "Intuitive Understanding", description: "Designed for flow and logic, so you can focus on the strategy.", icon: "intuitive" }
             ]
           },
-          gallery: {
-            title: "Gallery",
-            subtitle: "Artwork & Atmosphere",
-            item1: { title: "Next «?» space", desc: "Secret action card" },
-            item2: { title: "Porgas", desc: "Character design" }
-          },
-          footer: {
-            socialTitle: "Social Media",
-            contactTitle: "Contact Us",
-            langTitle: "Language",            
-            rights: "© 2026 Artum UB. All rights reserved.",
-            langs: { no: "Norsk", en: "English", ua: "Українська" }
-          }
+          gallery: { title: "Gallery", subtitle: "Artwork & Atmosphere", item1: { title: "Next «?» space", desc: "Secret action card" }, item2: { title: "Porgas", desc: "Character design" } },
+          footer: { socialTitle: "Social Media", contactTitle: "Contact Us", langTitle: "Language", rights: "© 2026 Artum UB. All rights reserved.", langs: { no: "Norsk", en: "English", ua: "Українська" } }
         },
         ua: {
           nav: { home: "Головна", about: "Про Нас", team: "Наша Команда", features: "Особливості", gallery: "Галерея", contact: "Контакти" },
@@ -278,34 +194,23 @@
             cta: "Дізнатися більше нижче",
           },
           about: {
-            title: "Наше Бачення",
-            subtitle: "Хто ми такі?",
+            title: "Наше Бачення", subtitle: "Хто ми такі?",
             text1: "Ми — Artum UB, молодіжна компанія, захоплена іграми.",
             text2: "Ми створюємо гру в стилі темного фентезі з захоплюючим та стратегічним ігровим процесом.",
             text3: "Нашою метою є поєднання містики, пригод та тактичного мислення в нашій грі — ідеально для тих, хто любить гострі відчуття та магічні світи.",
             tags: ["Містика", "Пригоди", "Тактика"],
             philosophyTitle: "Філософія дизайну",
-            philosophy: [
-              "Стратегічна глибина без зайвої складності.",
-              "Атмосферний дизайн, що занурює у світ.",
-              "Механіки, що розповідають історію."
-            ]
+            philosophy: ["Стратегічна глибина без зайвої складності.", "Атмосферний дизайн, що занурює у світ.", "Механіки, що розповідають історію."]
           },
           team: {
-            title: "Наша Команда",
-            subtitle: "Ті, хто створюють гру",
+            title: "Наша Команда", subtitle: "Ті, хто створюють гру",
             members: [
               { name: "Артем", role: "Лідер, підтримка (розробник сайту)" },
               { name: "Олексій", role: "Аналітик, розробник ідей, фінансист" },
               { name: "Дмитро", role: "Дизайнер, креатив, розробник ідей" }
             ]
           },
-          game: {
-            title: "Наша Гра",
-            status: "Незабаром",
-            buttonLabel: "Купити та замовити",
-            notification: "Ця функція наразі недоступна, оскільки гра знаходиться в розробці!"
-          },
+          game: { title: "Наша Гра", status: "Незабаром", buttonLabel: "Купити та замовити", notification: "Ця функція наразі недоступна, оскільки гра знаходиться в розробці!" },
           features: {
             title: "Чому обирають наші ігри?",
             items: [
@@ -314,23 +219,10 @@
               { id: 3, title: "Інтуїтивне розуміння", description: "Розроблено для плавності та логіки, щоб ви могли зосередитися на стратегії.", icon: "intuitive" }
             ]
           },
-          gallery: {
-            title: "Галерея",
-            subtitle: "Мистецтво та атмосфера",
-            item1: { title: "Наступне поле «?»", desc: "Секретна картка з дією" },
-            item2: { title: "Поргас", desc: "Дизайн персонажа" }
-          },
-          footer: {
-            socialTitle: "Соціальні мережі",
-            contactTitle: "Зв'яжіться з нами",
-            langTitle: "Мова",            
-            rights: "© 2026 Artum UB. Всі права захищені.",
-            langs: { no: "Norsk", en: "English", ua: "Українська" }
-          }
+          gallery: { title: "Галерея", subtitle: "Мистецтво та атмосфера", item1: { title: "Наступне поле «?»", desc: "Секретна картка з дією" }, item2: { title: "Поргас", desc: "Дизайн персонажа" } },
+          footer: { socialTitle: "Соціальні мережі", contactTitle: "Зв'яжіться з нами", langTitle: "Мова", rights: "© 2026 Artum UB. Всі права захищені.", langs: { no: "Norsk", en: "English", ua: "Українська" } }
         }
       };
-
-      // --- COMPONENTS ---
 
       const Lightbox = ({ src, onClose }) => {
         if (!src) return null;
@@ -347,40 +239,27 @@
         const audioRef = useRef(null);
 
         useEffect(() => {
-          const audio = new Audio("music/Forti Fores - Essence of Dreams (DEMO).wav");
+          const audio = new Audio("music/Forti Fores - Essence of Dreams (DEMO).mp3");
           audio.loop = true;
-          audio.volume = 0.1; 
+          audio.volume = 0.1;
           audioRef.current = audio;
-
-          return () => {
-            audio.pause();
-            audioRef.current = null;
-          };
+          return () => { audio.pause(); audioRef.current = null; };
         }, []);
 
         const togglePlay = () => {
           if (!audioRef.current) return;
-          
-          if (isPlaying) {
-            audioRef.current.pause();
-          } else {
-            audioRef.current.play().catch(error => {
-              console.error("Audio playback failed:", error);
-            });
-          }
+          if (isPlaying) { audioRef.current.pause(); }
+          else { audioRef.current.play().catch(e => console.error("Audio playback failed:", e)); }
           setIsPlaying(!isPlaying);
         };
 
         return (
-          <button 
-            onClick={togglePlay} 
+          <button
+            onClick={togglePlay}
             className="flex items-center justify-center w-8 h-8 md:w-10 md:h-10 rounded-full bg-stone-900/50 border border-stone-800 hover:border-amber-700/50 transition-all duration-300 group shadow-lg"
             aria-label={isPlaying ? "Pause music" : "Play music"}
           >
-            <Disc 
-              size={20} 
-              className={`transition-all duration-500 ${isPlaying ? 'animate-spin-neon' : 'text-amber-600 opacity-70 group-hover:opacity-100'}`} 
-            />
+            <Disc size={20} className={`transition-all duration-500 ${isPlaying ? 'animate-spin-neon' : 'text-amber-600 opacity-70 group-hover:opacity-100'}`} />
           </button>
         );
       };
@@ -391,9 +270,7 @@
 
         useEffect(() => {
           const handleClickOutside = (event) => {
-            if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-              setIsLangOpen(false);
-            }
+            if (dropdownRef.current && !dropdownRef.current.contains(event.target)) setIsLangOpen(false);
           };
           document.addEventListener('mousedown', handleClickOutside);
           return () => document.removeEventListener('mousedown', handleClickOutside);
@@ -401,7 +278,7 @@
 
         return (
           <div className="relative" ref={dropdownRef}>
-            <button 
+            <button
               onClick={() => setIsLangOpen(!isLangOpen)}
               className="flex items-center gap-2 px-3 py-1.5 bg-stone-900/50 border border-stone-800 rounded-md hover:border-amber-700/50 transition-all duration-300 text-stone-300 font-heading text-[10px] md:text-xs uppercase tracking-widest group shadow-lg"
             >
@@ -409,16 +286,10 @@
               <span className="hidden sm:inline">{content.footer.langs[lang]}</span>
               <ChevronDown size={12} className={`text-stone-600 transition-transform duration-300 ${isLangOpen ? 'rotate-180' : ''}`} />
             </button>
-
             {isLangOpen && (
               <div className="absolute top-full right-0 mt-2 w-32 md:w-40 bg-stone-900 border border-stone-800 rounded-sm shadow-2xl z-[60] dropdown-animate overflow-hidden">
                 {Object.entries(content.footer.langs).map(([key, label]) => (
-                  <button
-                    key={key}
-                    onClick={() => {
-                      setLang(key);
-                      setIsLangOpen(false);
-                    }}
+                  <button key={key} onClick={() => { setLang(key); setIsLangOpen(false); }}
                     className={`flex items-center justify-between w-full px-4 py-3 text-left font-heading text-[10px] md:text-xs uppercase tracking-widest hover:bg-stone-800 transition-colors border-b border-stone-800 last:border-0 ${lang === key ? 'text-amber-500 bg-stone-800/50' : 'text-stone-400'}`}
                   >
                     <span>{label}</span>
@@ -435,44 +306,35 @@
         const [isScrolled, setIsScrolled] = useState(false);
 
         useEffect(() => {
-          const handleScroll = () => {
-            setIsScrolled(window.scrollY > 50);
-          };
+          const handleScroll = () => setIsScrolled(window.scrollY > 50);
           window.addEventListener('scroll', handleScroll);
           return () => window.removeEventListener('scroll', handleScroll);
         }, []);
 
         return (
-          <nav 
-            className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-              isScrolled ? 'bg-stone-950/90 backdrop-blur-md shadow-lg border-b border-stone-800 py-2' : 'bg-transparent py-4'
-            }`}
-          >
-            {/* Absolute center container for Logo to ensure perfect centering regardless of siblings */}
+          <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-stone-950/90 backdrop-blur-md shadow-lg border-b border-stone-800 py-2' : 'bg-transparent py-4'}`}>
+            {/* Centered Logo */}
             <div className="absolute inset-x-0 top-0 h-full flex justify-center items-center pointer-events-none">
               <div className="pointer-events-auto flex items-center gap-3">
-                 <div className="h-10 w-10 md:h-12 md:w-12 rounded-full border border-stone-600 shadow-[0_0_15px_rgba(255,165,0,0.3)] overflow-hidden relative bg-black">
+                <div className="h-10 w-10 md:h-12 md:w-12 rounded-full border border-stone-600 shadow-[0_0_15px_rgba(255,165,0,0.3)] overflow-hidden relative bg-black">
                   <img src={ASSETS.logo} alt="Artum UB Logo" className="w-full h-full object-cover translate-x-[0.5px]" />
                 </div>
                 <span className="font-heading text-lg md:text-2xl font-bold tracking-widest text-stone-200 whitespace-nowrap hidden sm:block">
                   ARTUM <span className="text-amber-600">UB</span>
                 </span>
-                <span className="font-heading text-lg font-bold tracking-widest text-stone-200 whitespace-nowrap sm:hidden">
-                  ARTUM
-                </span>
+                <span className="font-heading text-lg font-bold tracking-widest text-stone-200 whitespace-nowrap sm:hidden">ARTUM</span>
               </div>
             </div>
 
-            {/* Content Container */}
+            {/* Left & Right Controls */}
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 md:h-20 flex items-center justify-between relative">
-              {/* Left Side (Empty for balance, or Menu) */}
-              <div className="flex-1">
-                {/* Spacer */}
+              {/* LEFT — Music Player */}
+              <div className="flex-1 flex items-center justify-start z-10">
+                <MusicPlayer />
               </div>
 
-              {/* Right Side Controls */}
-              <div className="flex-1 flex items-center justify-end gap-3 z-10">
-                <MusicPlayer />
+              {/* RIGHT — Language Switcher */}
+              <div className="flex-1 flex items-center justify-end z-10">
                 <LanguageSwitcher content={content} lang={lang} setLang={setLang} />
               </div>
             </div>
@@ -480,35 +342,31 @@
         );
       };
 
-      const Hero = ({ content }) => {
-        return (
-          <section id="home" className="relative h-screen w-full overflow-hidden flex items-center justify-center">
-            {/* Restored Static Image Background */}
-            <div className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0 transform scale-105" style={{ backgroundImage: `url('${ASSETS.heroBg}')` }}>
-              <div className="absolute inset-0 bg-gradient-to-b from-stone-950/60 via-stone-900/40 to-stone-950"></div>
-            </div>
-            
-            <div className="relative z-10 text-center px-4 max-w-4xl mx-auto mt-16">
-              <div className="mb-6 flex justify-center animate-fade-in-down">
-                <div className="h-32 w-32 md:h-48 md:w-48 rounded-full border-2 border-amber-600/50 shadow-[0_0_30px_rgba(217,119,6,0.4)] overflow-hidden relative bg-black/50 backdrop-blur-sm">
-                  <img src={ASSETS.logo} alt="Logo" className="w-full h-full object-cover translate-x-[1.5px]" />
-                </div>
+      const Hero = ({ content }) => (
+        <section id="home" className="relative h-screen w-full overflow-hidden flex items-center justify-center">
+          <div className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0 transform scale-105" style={{ backgroundImage: `url('${ASSETS.heroBg}')` }}>
+            <div className="absolute inset-0 bg-gradient-to-b from-stone-950/60 via-stone-900/40 to-stone-950"></div>
+          </div>
+          <div className="relative z-10 text-center px-4 max-w-4xl mx-auto mt-16">
+            <div className="mb-6 flex justify-center animate-fade-in-down">
+              <div className="h-32 w-32 md:h-48 md:w-48 rounded-full border-2 border-amber-600/50 shadow-[0_0_30px_rgba(217,119,6,0.4)] overflow-hidden relative bg-black/50 backdrop-blur-sm">
+                <img src={ASSETS.logo} alt="Logo" className="w-full h-full object-cover translate-x-[1.5px]" />
               </div>
-              <h1 className="font-heading text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 tracking-wider drop-shadow-lg leading-tight">
-                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-amber-500 to-amber-700">{content.hero.title}</span>
-              </h1>
-              <p className="text-lg md:text-xl text-stone-300 mb-10 max-w-2xl mx-auto leading-relaxed drop-shadow-md">{content.hero.subtitle}</p>
-              <a href="#about" className="inline-block px-8 py-3 bg-gradient-to-r from-red-900/80 to-stone-900/80 border border-amber-700 text-amber-100 font-heading uppercase tracking-widest text-sm hover:from-red-800 hover:to-stone-800 transition-all duration-300 shadow-[0_0_15px_rgba(180,83,9,0.3)] hover:shadow-[0_0_25px_rgba(180,83,9,0.5)] transform hover:-translate-y-1 backdrop-blur-sm">{content.hero.cta}</a>
             </div>
-          </section>
-        );
-      };
+            <h1 className="font-heading text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 tracking-wider drop-shadow-lg leading-tight">
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-amber-500 to-amber-700">{content.hero.title}</span>
+            </h1>
+            <p className="text-lg md:text-xl text-stone-300 mb-10 max-w-2xl mx-auto leading-relaxed drop-shadow-md">{content.hero.subtitle}</p>
+            <a href="#about" className="inline-block px-8 py-3 bg-gradient-to-r from-red-900/80 to-stone-900/80 border border-amber-700 text-amber-100 font-heading uppercase tracking-widest text-sm hover:from-red-800 hover:to-stone-800 transition-all duration-300 shadow-[0_0_15px_rgba(180,83,9,0.3)] hover:shadow-[0_0_25px_rgba(180,83,9,0.5)] transform hover:-translate-y-1 backdrop-blur-sm">{content.hero.cta}</a>
+          </div>
+        </section>
+      );
 
       const About = ({ content }) => {
         const icons = [<Ghost className="w-8 h-8 text-amber-600 mb-2" />, <Scroll className="w-8 h-8 text-amber-600 mb-2" />, <Sword className="w-8 h-8 text-amber-600 mb-2" />];
         return (
           <section id="about" className="py-24 relative">
-            <div className="absolute inset-0 bg-stone-950/60 z-[-1]"></div> {/* Semi-transparent background for readability */}
+            <div className="absolute inset-0 bg-stone-950/60 z-[-1]"></div>
             <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-stone-800 to-transparent"></div>
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -532,18 +390,18 @@
                   </div>
                 </div>
                 <div className="relative h-full flex items-center justify-center">
-                   <div className="absolute inset-0 bg-amber-900/10 blur-3xl rounded-full"></div>
-                   <div className="relative bg-stone-900/80 backdrop-blur-md p-8 md:p-12 border border-stone-800 shadow-2xl transform rotate-1 hover:rotate-0 transition-transform duration-500">
-                      <h3 className="font-heading text-2xl text-center text-stone-200 mb-6 border-b border-stone-800 pb-6">{content.about.philosophyTitle}</h3>
-                      <ul className="space-y-4">
-                        {content.about.philosophy.map((item, idx) => (
-                          <li key={idx} className="flex items-start">
-                            <span className="w-2 h-2 mt-2 mr-3 bg-amber-600 rounded-full"></span>
-                            <span className="text-stone-300">{item}</span>
-                          </li>
-                        ))}
-                      </ul>
-                   </div>
+                  <div className="absolute inset-0 bg-amber-900/10 blur-3xl rounded-full"></div>
+                  <div className="relative bg-stone-900/80 backdrop-blur-md p-8 md:p-12 border border-stone-800 shadow-2xl transform rotate-1 hover:rotate-0 transition-transform duration-500">
+                    <h3 className="font-heading text-2xl text-center text-stone-200 mb-6 border-b border-stone-800 pb-6">{content.about.philosophyTitle}</h3>
+                    <ul className="space-y-4">
+                      {content.about.philosophy.map((item, idx) => (
+                        <li key={idx} className="flex items-start">
+                          <span className="w-2 h-2 mt-2 mr-3 bg-amber-600 rounded-full"></span>
+                          <span className="text-stone-300">{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
               </div>
             </div>
@@ -551,33 +409,31 @@
         );
       };
 
-      const Team = ({ content }) => {
-        return (
-          <section id="team" className="py-24 border-t border-stone-900/50 overflow-hidden relative">
-            <div className="absolute inset-0 bg-stone-950/60 z-[-1]"></div>
-            <div className="absolute right-0 top-0 w-64 h-64 bg-amber-900/5 blur-[120px] rounded-full pointer-events-none"></div>
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="text-center mb-16">
-                <h4 className="text-amber-600 font-heading tracking-[0.2em] text-sm uppercase mb-2">{content.team.subtitle}</h4>
-                <h2 className="text-3xl md:text-5xl font-heading font-bold text-stone-100">{content.team.title}</h2>
-                <div className="w-24 h-1 bg-amber-700 mx-auto rounded-full mt-4"></div>
-              </div>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                {content.team.members.map((member, idx) => (
-                  <div key={idx} className="group flex flex-col items-center p-8 bg-stone-900/40 backdrop-blur-sm border border-stone-800 hover:border-amber-900/40 transition-all duration-500 rounded-lg">
-                    <div className="w-32 h-32 mb-6 rounded-sm bg-stone-950/80 border border-stone-800 flex items-center justify-center overflow-hidden relative">
-                      <User size={64} className="text-stone-800 group-hover:text-amber-900/40 transition-colors" />
-                      <div className="absolute inset-0 bg-gradient-to-tr from-amber-950/10 to-transparent"></div>
-                    </div>
-                    <h3 className="text-2xl font-heading text-stone-200 mb-2 group-hover:text-amber-500 transition-colors">{member.name}</h3>
-                    <p className="text-stone-300 text-sm font-normal text-center leading-relaxed italic tracking-wide max-w-[240px]">{member.role}</p>
-                  </div>
-                ))}
-              </div>
+      const Team = ({ content }) => (
+        <section id="team" className="py-24 border-t border-stone-900/50 overflow-hidden relative">
+          <div className="absolute inset-0 bg-stone-950/60 z-[-1]"></div>
+          <div className="absolute right-0 top-0 w-64 h-64 bg-amber-900/5 blur-[120px] rounded-full pointer-events-none"></div>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <h4 className="text-amber-600 font-heading tracking-[0.2em] text-sm uppercase mb-2">{content.team.subtitle}</h4>
+              <h2 className="text-3xl md:text-5xl font-heading font-bold text-stone-100">{content.team.title}</h2>
+              <div className="w-24 h-1 bg-amber-700 mx-auto rounded-full mt-4"></div>
             </div>
-          </section>
-        );
-      }
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {content.team.members.map((member, idx) => (
+                <div key={idx} className="group flex flex-col items-center p-8 bg-stone-900/40 backdrop-blur-sm border border-stone-800 hover:border-amber-900/40 transition-all duration-500 rounded-lg">
+                  <div className="w-32 h-32 mb-6 rounded-sm bg-stone-950/80 border border-stone-800 flex items-center justify-center overflow-hidden relative">
+                    <User size={64} className="text-stone-800 group-hover:text-amber-900/40 transition-colors" />
+                    <div className="absolute inset-0 bg-gradient-to-tr from-amber-950/10 to-transparent"></div>
+                  </div>
+                  <h3 className="text-2xl font-heading text-stone-200 mb-2 group-hover:text-amber-500 transition-colors">{member.name}</h3>
+                  <p className="text-stone-300 text-sm font-normal text-center leading-relaxed italic tracking-wide max-w-[240px]">{member.role}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      );
 
       const Features = ({ content }) => {
         const getIcon = (type) => {
@@ -590,7 +446,7 @@
         };
         return (
           <section id="features" className="py-24 text-stone-200 border-t border-stone-800 relative">
-             <div className="absolute inset-0 bg-stone-900/70 z-[-1]"></div>
+            <div className="absolute inset-0 bg-stone-900/70 z-[-1]"></div>
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center mb-16">
                 <h2 className="text-3xl md:text-5xl font-heading font-bold text-transparent bg-clip-text bg-gradient-to-r from-stone-200 to-stone-500 mb-4">{content.features.title}</h2>
@@ -611,37 +467,35 @@
         );
       };
 
-      const Gallery = ({ content, openLightbox }) => {
-        return (
-          <section id="gallery" className="py-24 relative">
-            <div className="absolute inset-0 bg-stone-950/70 z-[-1]"></div>
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="mb-16 flex flex-col items-center text-center">
-                <span className="font-heading text-amber-600 tracking-widest uppercase text-sm mb-2">{content.gallery.subtitle}</span>
-                <h2 className="text-3xl md:text-5xl font-heading font-bold text-white">{content.gallery.title}</h2>
-              </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 auto-rows-[400px]">
-                <div className="group relative overflow-hidden rounded-sm border border-stone-800 md:col-span-1 row-span-1 cursor-pointer" onClick={() => openLightbox(ASSETS.gallery1)}>
-                   <div className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0" style={{ backgroundImage: `url('${ASSETS.gallery1}')` }}></div>
-                   <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80"></div>
-                   <div className="absolute bottom-0 left-0 p-6 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                      <h3 className="text-2xl font-heading text-stone-100">{content.gallery.item1.title}</h3>
-                      <p className="text-amber-500 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">{content.gallery.item1.desc}</p>
-                   </div>
+      const Gallery = ({ content, openLightbox }) => (
+        <section id="gallery" className="py-24 relative">
+          <div className="absolute inset-0 bg-stone-950/70 z-[-1]"></div>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="mb-16 flex flex-col items-center text-center">
+              <span className="font-heading text-amber-600 tracking-widest uppercase text-sm mb-2">{content.gallery.subtitle}</span>
+              <h2 className="text-3xl md:text-5xl font-heading font-bold text-white">{content.gallery.title}</h2>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 auto-rows-[400px]">
+              <div className="group relative overflow-hidden rounded-sm border border-stone-800 md:col-span-1 row-span-1 cursor-pointer" onClick={() => openLightbox(ASSETS.gallery1)}>
+                <div className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0" style={{ backgroundImage: `url('${ASSETS.gallery1}')` }}></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80"></div>
+                <div className="absolute bottom-0 left-0 p-6 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                  <h3 className="text-2xl font-heading text-stone-100">{content.gallery.item1.title}</h3>
+                  <p className="text-amber-500 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">{content.gallery.item1.desc}</p>
                 </div>
-                <div className="group relative overflow-hidden rounded-sm border border-stone-800 md:col-span-1 row-span-1 cursor-pointer" onClick={() => openLightbox(ASSETS.gallery2)}>
-                   <div className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0" style={{ backgroundImage: `url('${ASSETS.gallery2}')` }}></div>
-                   <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80"></div>
-                   <div className="absolute bottom-0 left-0 p-6 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                      <h3 className="text-2xl font-heading text-stone-100">{content.gallery.item2.title}</h3>
-                      <p className="text-amber-500 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">{content.gallery.item2.desc}</p>
-                   </div>
+              </div>
+              <div className="group relative overflow-hidden rounded-sm border border-stone-800 md:col-span-1 row-span-1 cursor-pointer" onClick={() => openLightbox(ASSETS.gallery2)}>
+                <div className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0" style={{ backgroundImage: `url('${ASSETS.gallery2}')` }}></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80"></div>
+                <div className="absolute bottom-0 left-0 p-6 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                  <h3 className="text-2xl font-heading text-stone-100">{content.gallery.item2.title}</h3>
+                  <p className="text-amber-500 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">{content.gallery.item2.desc}</p>
                 </div>
               </div>
             </div>
-          </section>
-        );
-      };
+          </div>
+        </section>
+      );
 
       const OurGame = ({ content, openLightbox }) => {
         const [showNotify, setShowNotify] = useState(false);
@@ -654,87 +508,66 @@
         };
         return (
           <section id="game" className="py-24 relative overflow-hidden border-t border-stone-900">
-             <div className="absolute inset-0 bg-stone-950/70 z-[-1]"></div>
-             <div className="max-w-5xl mx-auto px-4 text-center">
-                <div className="mb-12">
-                   <h2 className="text-4xl md:text-5xl font-heading font-bold text-stone-100 mb-4 tracking-wider">{content.game.title}</h2>
-                   <div className="w-24 h-1 bg-amber-700 mx-auto rounded-full mb-4"></div>
-                   <p className="font-heading text-amber-600 uppercase tracking-widest text-sm">{content.game.status}</p>
-                </div>
-                <div className="relative inline-block group mb-12 cursor-pointer overflow-hidden rounded-sm border border-stone-800" onClick={() => openLightbox(ASSETS.gameImg)}>
-                   <div className="absolute -inset-1 bg-gradient-to-r from-red-900 to-amber-900 rounded-sm blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
-                   <img src={ASSETS.gameImg} alt="Game" className="relative rounded-sm max-w-full h-auto md:max-h-[600px] object-cover transition-all duration-700 group-hover:scale-105 group-hover:grayscale-0 grayscale-[0.3]" />
-                </div>
-                <div className="relative inline-flex flex-col items-center w-full">
-                  {showNotify && (
-                    <div className="absolute bottom-full mb-6 w-72 p-4 bg-stone-950 border border-red-900/50 rounded-md shadow-2xl z-20 animate-fade-in-up">
-                      <p className="text-xs text-stone-300 font-light leading-relaxed">{content.game.notification}</p>
-                      <div className="absolute top-full left-1/2 -translate-x-1/2 w-3 h-3 bg-stone-950 border-r border-b border-red-900/50 rotate-45 -mt-1.5"></div>
-                    </div>
-                  )}
-                  <button onClick={handleButtonClick} className="group relative flex items-center justify-center gap-3 px-12 py-4 bg-gradient-to-r from-red-950 to-stone-950 border border-amber-900/30 text-stone-400 font-heading uppercase tracking-[0.15em] text-sm cursor-not-allowed overflow-hidden shadow-2xl min-w-[280px]">
-                    <div className="flex items-center justify-center w-full gap-3 relative z-10">
-                      <Lock size={16} className="text-amber-900/40" />
-                      <span className="text-stone-300 opacity-80">{content.game.buttonLabel}</span>
-                    </div>
-                    <div className="absolute inset-0 bg-black/60 group-hover:bg-black/40 transition-colors pointer-events-none"></div>
-                  </button>
-                </div>
-             </div>
+            <div className="absolute inset-0 bg-stone-950/70 z-[-1]"></div>
+            <div className="max-w-5xl mx-auto px-4 text-center">
+              <div className="mb-12">
+                <h2 className="text-4xl md:text-5xl font-heading font-bold text-stone-100 mb-4 tracking-wider">{content.game.title}</h2>
+                <div className="w-24 h-1 bg-amber-700 mx-auto rounded-full mb-4"></div>
+                <p className="font-heading text-amber-600 uppercase tracking-widest text-sm">{content.game.status}</p>
+              </div>
+              <div className="relative inline-block group mb-12 cursor-pointer overflow-hidden rounded-sm border border-stone-800" onClick={() => openLightbox(ASSETS.gameImg)}>
+                <div className="absolute -inset-1 bg-gradient-to-r from-red-900 to-amber-900 rounded-sm blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
+                <img src={ASSETS.gameImg} alt="Game" className="relative rounded-sm max-w-full h-auto md:max-h-[600px] object-cover transition-all duration-700 group-hover:scale-105 group-hover:grayscale-0 grayscale-[0.3]" />
+              </div>
+              <div className="relative inline-flex flex-col items-center w-full">
+                {showNotify && (
+                  <div className="absolute bottom-full mb-6 w-72 p-4 bg-stone-950 border border-red-900/50 rounded-md shadow-2xl z-20 animate-fade-in-up">
+                    <p className="text-xs text-stone-300 font-light leading-relaxed">{content.game.notification}</p>
+                    <div className="absolute top-full left-1/2 -translate-x-1/2 w-3 h-3 bg-stone-950 border-r border-b border-red-900/50 rotate-45 -mt-1.5"></div>
+                  </div>
+                )}
+                <button onClick={handleButtonClick} className="group relative flex items-center justify-center gap-3 px-12 py-4 bg-gradient-to-r from-red-950 to-stone-950 border border-amber-900/30 text-stone-400 font-heading uppercase tracking-[0.15em] text-sm cursor-not-allowed overflow-hidden shadow-2xl min-w-[280px]">
+                  <div className="flex items-center justify-center w-full gap-3 relative z-10">
+                    <Lock size={16} className="text-amber-900/40" />
+                    <span className="text-stone-300 opacity-80">{content.game.buttonLabel}</span>
+                  </div>
+                  <div className="absolute inset-0 bg-black/60 group-hover:bg-black/40 transition-colors pointer-events-none"></div>
+                </button>
+              </div>
+            </div>
           </section>
         );
       };
 
-      const Footer = ({ content }) => {
-        return (
-          <footer className="bg-stone-950 border-t border-stone-900 py-16 relative z-10">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center md:text-left items-start">
-                
-                {/* Contact Column - Swapped to Left */}
-                <div className="flex flex-col items-center md:items-start space-y-6">
-                  <h4 className="text-stone-300 font-heading tracking-[0.2em] uppercase text-xs border-b border-amber-900/30 pb-2 w-full max-w-[160px] text-center md:text-left">
-                    {content.footer.contactTitle}
-                  </h4>
-                  <a 
-                    href={`https://mail.google.com/mail/?view=cm&fs=1&to=${SOCIALS.email}`} 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    className="flex items-center gap-3 text-white hover:text-amber-400 transition-all duration-300 group"
-                  >
-                    <div className="p-2 bg-stone-900 rounded-full border border-stone-800 group-hover:border-amber-900/50">
-                      <Mail size={18} />
-                    </div>
-                    <span className="text-sm font-bold tracking-widest select-all">{SOCIALS.email}</span>
+      const Footer = ({ content }) => (
+        <footer className="bg-stone-950 border-t border-stone-900 py-16 relative z-10">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center md:text-left items-start">
+              <div className="flex flex-col items-center md:items-start space-y-6">
+                <h4 className="text-stone-300 font-heading tracking-[0.2em] uppercase text-xs border-b border-amber-900/30 pb-2 w-full max-w-[160px] text-center md:text-left">{content.footer.contactTitle}</h4>
+                <a href={`https://mail.google.com/mail/?view=cm&fs=1&to=${SOCIALS.email}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-white hover:text-amber-400 transition-all duration-300 group">
+                  <div className="p-2 bg-stone-900 rounded-full border border-stone-800 group-hover:border-amber-900/50"><Mail size={18} /></div>
+                  <span className="text-sm font-bold tracking-widest select-all">{SOCIALS.email}</span>
+                </a>
+              </div>
+              <div className="flex flex-col items-center space-y-6">
+                <h4 className="text-stone-300 font-heading tracking-[0.2em] uppercase text-xs border-b border-amber-900/30 pb-2 w-full max-w-[160px] text-center">{content.footer.socialTitle}</h4>
+                <div className="flex space-x-8">
+                  <a href={SOCIALS.twitter} target="_blank" rel="noopener noreferrer" className="text-stone-500 hover:text-amber-500 transition-all duration-300 transform hover:scale-125"><Twitter size={24} /></a>
+                  <a href={SOCIALS.instagram} target="_blank" rel="noopener noreferrer" className="text-stone-500 hover:text-amber-500 transition-all duration-300 transform hover:scale-125"><Instagram size={24} /></a>
+                  <a href={SOCIALS.tiktok} target="_blank" rel="noopener noreferrer" className="text-stone-500 hover:text-amber-500 transition-all duration-300 transform hover:scale-125">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" /></svg>
                   </a>
                 </div>
-
-                {/* Socials Column - Centered and aligned */}
-                <div className="flex flex-col items-center space-y-6">
-                  <h4 className="text-stone-300 font-heading tracking-[0.2em] uppercase text-xs border-b border-amber-900/30 pb-2 w-full max-w-[160px] text-center">
-                    {content.footer.socialTitle}
-                  </h4>
-                  <div className="flex space-x-8">
-                    <a href={SOCIALS.twitter} target="_blank" rel="noopener noreferrer" className="text-stone-500 hover:text-amber-500 transition-all duration-300 transform hover:scale-125"><Twitter size={24} /></a>
-                    <a href={SOCIALS.instagram} target="_blank" rel="noopener noreferrer" className="text-stone-500 hover:text-amber-500 transition-all duration-300 transform hover:scale-125"><Instagram size={24} /></a>
-                    <a href={SOCIALS.tiktok} target="_blank" rel="noopener noreferrer" className="text-stone-500 hover:text-amber-500 transition-all duration-300 transform hover:scale-125">
-                       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" /></svg>
-                    </a>
-                  </div>
-                </div>
-
-                {/* Brand Column - Swapped to Right */}
-                <div className="flex flex-col items-center md:items-end space-y-4">
-                  <h3 className="font-heading text-2xl font-bold text-stone-100">ARTUM <span className="text-amber-700">UB</span></h3>
-                  <p className="text-stone-400 text-sm tracking-wide text-center md:text-right">{content.footer.rights}</p>
-                  <p className="text-amber-900/60 font-heading text-[10px] uppercase tracking-[0.3em] text-center md:text-right">{content.footer.tagline}</p>
-                </div>
-
+              </div>
+              <div className="flex flex-col items-center md:items-end space-y-4">
+                <h3 className="font-heading text-2xl font-bold text-stone-100">ARTUM <span className="text-amber-700">UB</span></h3>
+                <p className="text-stone-400 text-sm tracking-wide text-center md:text-right">{content.footer.rights}</p>
               </div>
             </div>
-          </footer>
-        );
-      };
+          </div>
+        </footer>
+      );
 
       const App = () => {
         const [lang, setLang] = useState('no');
@@ -745,9 +578,7 @@
             <video className="video-bg" autoPlay muted loop playsInline>
               <source src="https://cdn.akamai.steamstatic.com/steamcommunity/public/images/items/1684350/83de58962f68ab5151573386be4901f84f5bd6f2.mp4" type="video/mp4" />
             </video>
-            {/* Header Background Blocker: ensures video does not show through the transparent navbar */}
             <div className="fixed top-0 left-0 w-full h-16 md:h-20 bg-stone-950 z-40 transition-all duration-300"></div>
-            
             <Navbar content={content} lang={lang} setLang={setLang} />
             <main className="relative z-0">
               <Hero content={content} />
@@ -766,5 +597,6 @@
       const root = createRoot(document.getElementById('root'));
       root.render(<App />);
     </script>
+    <script type="module" src="/index.tsx"></script>
   </body>
 </html>
