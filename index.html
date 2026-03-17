@@ -1224,15 +1224,25 @@
         </footer>
       );
 
+      const BACKGROUND_VIDEOS = [
+        "https://cdn.akamai.steamstatic.com/steamcommunity/public/images/items/1684350/83de58962f68ab5151573386be4901f84f5bd6f2.mp4",
+        "https://cdn.akamai.steamstatic.com/steamcommunity/public/images/items/252490/4a6d56ec1c9475f768ba6a67c13a57cd61c82b4e.mp4",
+        "https://cdn.akamai.steamstatic.com/steamcommunity/public/images/items/556130/627dc1205a466b1ec9ff394572b3b01cd044bc41.mp4",
+        "https://cdn.akamai.steamstatic.com/steamcommunity/public/images/items/1313140/c80d1a3ea315f69f72cbb77bffe42c5ed0f7b945.mp4",
+        "https://cdn.akamai.steamstatic.com/steamcommunity/public/images/items/251110/b9996069db263832bf303d54c7c48201b6188998.mp4"
+      ];
+
       const App = () => {
         const [lang, setLang] = useState('no');
         const [currentPage, setCurrentPage] = useState('home');
         const [lightboxSrc, setLightboxSrc] = useState(null);
+        const [bgVideo] = useState(() => BACKGROUND_VIDEOS[Math.floor(Math.random() * BACKGROUND_VIDEOS.length)]);
+        
         const content = CONTENT[lang];
         return (
           <div className="min-h-screen text-stone-100 selection:bg-amber-900 selection:text-white">
-            <video className="video-bg" autoPlay muted loop playsInline>
-              <source src="https://cdn.akamai.steamstatic.com/steamcommunity/public/images/items/1684350/83de58962f68ab5151573386be4901f84f5bd6f2.mp4" type="video/mp4" />
+            <video className="video-bg" autoPlay muted loop playsInline key={bgVideo}>
+              <source src={bgVideo} type="video/mp4" />
             </video>
             <div className="fixed top-0 left-0 w-full h-16 md:h-20 bg-stone-950 z-40 transition-all duration-300"></div>
             <Navbar content={content} lang={lang} setLang={setLang} setCurrentPage={setCurrentPage} />
