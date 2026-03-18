@@ -99,7 +99,8 @@
         object-fit: cover;
       }
       @keyframes scrollleft {
-        to { left: -350px; }
+        from { transform: translate3d(max(calc(350px * var(--total-items)), 100%), 0, 0); }
+        to { transform: translate3d(-350px, 0, 0); }
       }
       .scrolling-item {
         width: 350px;
@@ -108,7 +109,8 @@
         border-radius: 6px;
         position: absolute;
         overflow: hidden;
-        left: max(calc(350px * var(--total-items)), 100%);
+        left: 0;
+        will-change: transform;
         animation-name: scrollleft;
         animation-duration: var(--animation-duration);
         animation-timing-function: linear;
@@ -441,7 +443,7 @@
         object-fit: cover;
       }
 
-      .gallery-container:hover .gallery-card:not(:hover) {
+      .gallery-card-body:has(.gallery-card:hover) .gallery-card:not(:hover) {
         filter: grayscale(100%);
       }
       .gallery-card:hover {
@@ -1082,7 +1084,7 @@
       };
 
       const InstructionTeaser = ({ content, setCurrentPage }) => (
-        <section className="py-24 relative overflow-hidden flex flex-col justify-center items-center border-t border-stone-900/50">
+        <section id="instructions-teaser" className="py-24 relative overflow-hidden flex flex-col justify-center items-center border-t border-stone-900/50">
           <div className="absolute inset-0 bg-stone-950/60 z-[-1]"></div>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
             <div className="mb-12 flex flex-col items-center text-center">
@@ -1118,7 +1120,12 @@
 
         return (
           <section className="min-h-screen pt-32 pb-24 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto relative">
-            <button onClick={() => { setCurrentPage('home'); window.scrollTo(0, 0); }} className="mb-12 text-stone-400 hover:text-amber-500 transition-colors font-heading tracking-wider uppercase text-sm flex items-center gap-2">
+            <button onClick={() => {
+              setCurrentPage('home');
+              setTimeout(() => {
+                document.getElementById('instructions-teaser')?.scrollIntoView({ behavior: 'instant' });
+              }, 0);
+            }} className="mb-12 text-stone-400 hover:text-amber-500 transition-colors font-heading tracking-wider uppercase text-sm flex items-center gap-2">
               {content.instructions.back}
             </button>
             <div className="text-center mb-16">
@@ -1133,13 +1140,17 @@
             <div className="bg-stone-900/60 border border-stone-800 rounded-2xl p-4 md:p-8 shadow-2xl backdrop-blur-sm">
               {/* Main Image Area */}
               <div className="relative rounded-xl overflow-hidden bg-stone-950 h-[50vh] md:h-[65vh] flex items-center justify-center border border-stone-800/50">
-                <img 
-                  src={images[activeStep]} 
-                  alt={`Instruction step ${activeStep + 1}`} 
-                  className="w-full h-full object-contain cursor-pointer transition-transform duration-500"
-                  onClick={() => openLightbox(images[activeStep])}
-                  referrerPolicy="no-referrer"
-                />
+                {images.map((src, idx) => (
+                  <img 
+                    key={idx}
+                    src={src} 
+                    alt={`Instruction step ${idx + 1}`} 
+                    className={`absolute inset-0 w-full h-full object-contain cursor-pointer transition-opacity duration-300 will-change-[opacity] ${activeStep === idx ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}
+                    onClick={() => activeStep === idx && openLightbox(src)}
+                    referrerPolicy="no-referrer"
+                    loading={idx === 0 ? "eager" : "lazy"}
+                  />
+                ))}
 
                 {/* Navigation Buttons */}
                 <button 
