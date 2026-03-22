@@ -726,6 +726,7 @@
           },
           team: {
             title: "Vårt Team", subtitle: "Menneskene bak spillet",
+            testedText: "Spillet har blitt testet",
             members: [
               { name: "Artem", role: "Leder, støttende (nettstedsutvikler)", image: "https://pbs.twimg.com/media/HEBnfcDbIAACWGU?format=jpg&name=medium" },
               { name: "Oleksii", role: "Analytiker, idéutvikler, Finansmann", image: "https://pbs.twimg.com/media/HEBnfflW0AAyULe?format=jpg&name=medium" },
@@ -831,6 +832,7 @@
           },
           team: {
             title: "Our Team", subtitle: "The minds behind the game",
+            testedText: "The game has been tested",
             members: [
               { name: "Artem", role: "Leader, supportive (site developer)", image: "https://pbs.twimg.com/media/HEBnfcDbIAACWGU?format=jpg&name=medium" },
               { name: "Oleksii", role: "Analytiker, idea developer, Financier", image: "https://pbs.twimg.com/media/HEBnfflW0AAyULe?format=jpg&name=medium" },
@@ -936,6 +938,7 @@
           },
           team: {
             title: "Наша Команда", subtitle: "Ті, хто створюють гру",
+            testedText: "Гру було протестовано",
             members: [
               { name: "Артем", role: "Лідер, підтримка (розробник сайту)", image: "https://pbs.twimg.com/media/HEBnfcDbIAACWGU?format=jpg&name=medium" },
               { name: "Олексій", role: "Аналітик, розробник ідей, фінансист", image: "https://pbs.twimg.com/media/HEBnfflW0AAyULe?format=jpg&name=medium" },
@@ -1507,7 +1510,7 @@
               <h2 className="text-3xl md:text-5xl font-heading font-bold text-stone-100">{content.team.title}</h2>
               <div className="w-24 h-1 bg-amber-700 mx-auto rounded-full mt-4"></div>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
               {content.team.members.map((member, idx) => (
                 <div key={idx} className="group flex flex-col items-center p-8 bg-stone-900/40 backdrop-blur-sm border border-stone-800 hover:border-amber-900/40 transition-all duration-500 rounded-lg">
                   <div className="w-32 h-32 mb-6 rounded-full bg-stone-950/80 border border-stone-800 flex items-center justify-center overflow-hidden relative shadow-lg">
@@ -1522,6 +1525,27 @@
                   <p className="text-stone-300 text-sm font-normal text-center leading-relaxed italic tracking-wide max-w-[240px]">{member.role}</p>
                 </div>
               ))}
+            </div>
+
+            {/* Tested Section */}
+            <div className="flex flex-col items-center justify-center pt-16 border-t border-stone-800/50 relative">
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-stone-950 px-4">
+                <Check size={24} className="text-amber-600" />
+              </div>
+              <div className="relative rounded-2xl overflow-hidden border border-stone-800 shadow-2xl max-w-lg w-full group">
+                <img 
+                  src="https://pbs.twimg.com/media/HEBxcJyb0AABE3t?format=jpg&name=medium" 
+                  alt="Tested" 
+                  className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700"
+                  referrerPolicy="no-referrer"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-stone-950/90 via-stone-950/20 to-transparent pointer-events-none"></div>
+                <div className="absolute bottom-0 left-0 right-0 p-4 md:p-6 text-center">
+                  <p className="text-amber-500 font-heading text-xl md:text-2xl font-bold tracking-wide drop-shadow-lg">
+                    {content.team.testedText}
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </section>
