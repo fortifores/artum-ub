@@ -690,7 +690,7 @@
     <script type="text/babel" data-type="module">
       import React, { useState, useEffect, useRef } from 'react';
       import { createRoot } from 'react-dom/client';
-      import { ChevronDown, Twitter, Instagram, Mail, Scroll, Sword, Ghost, Brain, Sparkles, HandMetal, X, Lock, Globe, User, Check, Disc, ChevronLeft, ChevronRight, Handshake, Coins, CreditCard, Trophy, Swords } from 'lucide-react';
+      import { ChevronDown, Twitter, Instagram, Mail, Scroll, Sword, Ghost, Brain, Sparkles, HandMetal, X, Lock, Globe, User, Check, Disc, ChevronLeft, ChevronRight, Handshake, Coins, CreditCard, Trophy, Swords, SunMoon } from 'lucide-react';
 
       const ASSETS = {
         logo: "https://pbs.twimg.com/media/HAejojiXoAEMDas?format=jpg&name=large",
@@ -782,13 +782,6 @@
                 ]
               },
               {
-                title: "🏆 Seiersbetingelse",
-                icon: "Trophy",
-                content: [
-                  "Vinneren er spilleren som fortsatt har kort igjen, mens motstanderen ikke har noen igjen før våpenhvilen begynner."
-                ]
-              },
-              {
                 title: "⚔️ Skadetyper",
                 icon: "Swords",
                 content: [
@@ -796,6 +789,30 @@
                   "<b>D (Damage) — vanlig skade</b><br/>Når du påfører vanlig skade, mister det valgte fiendekortet helse.",
                   "<b>M (Magic) — magisk skade</b><br/>Når du påfører magisk skade, gir du skade lik mengden magi, og gjenoppretter samtidig helse til kortet ditt som påførte den magiske skaden.",
                   "Helsen kan ikke overstige kortets startverdi."
+                ]
+              },
+              {
+                title: "Dag, Natt og Årstider",
+                icon: "SunMoon",
+                content: [
+                  "Spillet har kort som styrer dag- og nattsyklusen, samt årstidene – sommer og vinter. I starten er dagkortet og sommerkortet aktive. Når en spiller går på en bestemt rute, skjer det en endring: dag blir til natt, eller sommer blir til vinter.",
+                  "Når vinteren kommer, kan helt nummer 2 ikke brukes, men han kan fortsatt bli angrepet. Ishelter som står på brettet har derimot immunitet mot denne effekten. Velg plasseringen med omhu – posisjonering påvirker spillets gang direkte."
+                ]
+              },
+              {
+                title: "Heltenes evner",
+                icon: "Sparkles",
+                content: [
+                  "Helter har evner som enten kan brukes én gang eller være permanente. Du kan velge å bruke en evne eller gjøre én av to typer skade.",
+                  "Noen figurer har passive eller aktive evner. For å se hvilken type det er, sjekk nederst på kortet:<br/>🔴 rød sirkel — aktiv evne<br/>🟢 grønn sirkel — passiv evne",
+                  "Hvis et kort med en passiv evne ligger i “lommen” din og ikke på slagmarken, virker evnen fortsatt på andre kort dersom effekten tillater det."
+                ]
+              },
+              {
+                title: "🏆 Seiersbetingelse",
+                icon: "Trophy",
+                content: [
+                  "Vinneren er spilleren som fortsatt har kort igjen, mens motstanderen ikke har noen igjen før våpenhvilen begynner."
                 ]
               }
             ],
@@ -888,13 +905,6 @@
                 ]
               },
               {
-                title: "🏆 Victory Condition",
-                icon: "Trophy",
-                content: [
-                  "The winner is the player who still has cards remaining while their opponent has none left before the truce begins."
-                ]
-              },
-              {
                 title: "⚔️ Damage Types",
                 icon: "Swords",
                 content: [
@@ -902,6 +912,30 @@
                   "<b>D (Damage) — normal damage</b><br/>When dealing normal damage, the selected enemy card loses health.",
                   "<b>M (Magic) — magic damage</b><br/>When dealing magic damage, you deal damage equal to the amount of magic and also restore health to your card that dealt the magic damage.",
                   "Health cannot exceed the card’s starting value."
+                ]
+              },
+              {
+                title: "Day/Night and Seasons",
+                icon: "SunMoon",
+                content: [
+                  "The game includes cards that control the day and night cycle, as well as the seasons—summer and winter. Initially, the day card and the summer card are active. When a player steps on a specific tile, the state switches: day turns into night, or summer changes into winter.",
+                  "When winter begins, Hero #2 cannot be used, but can still be attacked. However, ice heroes on the field are immune to this effect. Choose your positioning wisely, as placement directly impacts the course of the game."
+                ]
+              },
+              {
+                title: "Hero Abilities",
+                icon: "Sparkles",
+                content: [
+                  "Heroes have abilities that can be either one-time use or permanent. You can choose to use an ability or deal one of two types of damage.",
+                  "Some characters have passive or active abilities. To identify the type, look at the bottom of the card:<br/>🔴 red circle — active ability<br/>🟢 green circle — passive ability",
+                  "If a card with a passive ability is in your “pocket” and not on the battlefield, it still affects other cards if its effect allows it."
+                ]
+              },
+              {
+                title: "🏆 Victory Condition",
+                icon: "Trophy",
+                content: [
+                  "The winner is the player who still has cards remaining while their opponent has none left before the truce begins."
                 ]
               }
             ],
@@ -994,13 +1028,6 @@
                 ]
               },
               {
-                title: "🏆 Умова перемоги",
-                icon: "Trophy",
-                content: [
-                  "Переможцем стає гравець, у якого залишилися карти, тоді як у суперника вони повністю закінчилися до настання перемир’я."
-                ]
-              },
-              {
                 title: "⚔️ Типи шкоди",
                 icon: "Swords",
                 content: [
@@ -1008,6 +1035,30 @@
                   "<b>D (Damage) — звичайна шкода</b><br/>При нанесенні звичайної шкоди обраній карті суперника зменшується здоров’я.",
                   "<b>M (Magic) — магічна шкода</b><br/>При нанесенні магічної шкоди ви завдаєте шкоду, що дорівнює кількості магії, а також відновлюєте здоров’я своїй карті, яка завдала цю шкоду.",
                   "Здоров’я не може перевищувати початкове значення карти."
+                ]
+              },
+              {
+                title: "День/Ніч та Пори року",
+                icon: "SunMoon",
+                content: [
+                  "У грі є карти, що відповідають за зміну дня і ночі, а також за пори року — літо та зиму. Спочатку активними є карта дня і карта літа. Коли один із гравців стає на спеціальну клітинку, відбувається перемикання: день змінюється на ніч, а літо — на зиму.",
+                  "Коли настає зима, герой під номером 2 не може бути використаний, однак він усе ще може бути атакований. Водночас крижані герої, які перебувають на полі, мають імунітет до цього ефекту. Тому обирайте розстановку з розумом — позиціонування безпосередньо впливає на перебіг гри."
+                ]
+              },
+              {
+                title: "Здібності героїв",
+                icon: "Sparkles",
+                content: [
+                  "Герої мають здібності, які можуть бути одноразовими або постійними. Ви можете обрати: використати здібність або завдати один із двох типів шкоди.",
+                  "У деяких персонажів є пасивні або активні здібності. Щоб зрозуміти тип здібності, подивіться внизу карти:<br/>🔴 червоне коло — активна здібність<br/>🟢 зелене коло — пасивна здібність",
+                  "Якщо карта з пасивною здібністю знаходиться у вас «у кишені», а не на полі бою, вона все одно діє на інші карти, якщо це передбачено її ефектом."
+                ]
+              },
+              {
+                title: "🏆 Умова перемоги",
+                icon: "Trophy",
+                content: [
+                  "Переможцем стає гравець, у якого залишилися карти, тоді як у суперника вони повністю закінчилися до настання перемир’я."
                 ]
               }
             ],
@@ -1736,7 +1787,9 @@
                     Coins: Coins,
                     CreditCard: CreditCard,
                     Trophy: Trophy,
-                    Swords: Swords
+                    Swords: Swords,
+                    SunMoon: SunMoon,
+                    Sparkles: Sparkles
                   }[block.icon];
                   
                   return (
