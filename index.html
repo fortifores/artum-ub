@@ -690,7 +690,7 @@
     <script type="text/babel" data-type="module">
       import React, { useState, useEffect, useRef } from 'react';
       import { createRoot } from 'react-dom/client';
-      import { ChevronDown, Twitter, Instagram, Mail, Scroll, Sword, Ghost, Brain, Sparkles, HandMetal, X, Lock, Globe, User, Check, Disc, ChevronLeft, ChevronRight } from 'lucide-react';
+      import { ChevronDown, Twitter, Instagram, Mail, Scroll, Sword, Ghost, Brain, Sparkles, HandMetal, X, Lock, Globe, User, Check, Disc, ChevronLeft, ChevronRight, Handshake, Coins, CreditCard, Trophy, Swords } from 'lucide-react';
 
       const ASSETS = {
         logo: "https://pbs.twimg.com/media/HAejojiXoAEMDas?format=jpg&name=large",
@@ -727,9 +727,9 @@
           team: {
             title: "Vårt Team", subtitle: "Menneskene bak spillet",
             members: [
-              { name: "Artem", role: "Leder, støttende (nettstedsutvikler)" },
-              { name: "Oleksii", role: "Analytiker, idéutvikler, Finansmann" },
-              { name: "Dmytro", role: "Designer, kreativ, idéutvikler" }
+              { name: "Artem", role: "Leder, støttende (nettstedsutvikler)", image: "https://pbs.twimg.com/media/HEBnfcDbIAACWGU?format=jpg&name=medium" },
+              { name: "Oleksii", role: "Analytiker, idéutvikler, Finansmann", image: "https://pbs.twimg.com/media/HEBnfflW0AAyULe?format=jpg&name=medium" },
+              { name: "Dmytro", role: "Designer, kreativ, idéutvikler", image: "https://pbs.twimg.com/media/HEBnfb8aMAAix58?format=jpg&name=medium" }
             ]
           },
           game: { title: "Vårt Spill", status: "Snart", buttonLabel: "Kjøp og bestill", notification: "Denne funksjonen er for øyeblikket utilgjengelig, og spillet er under utvikling!" },
@@ -749,6 +749,55 @@
             teaserTitle: "Hvordan spille?", 
             teaserSubtitle: "Spillinstruksjoner", 
             mobileHint: "Trykk på bildet for å åpne det i fullskjerm og lese instruksjonene",
+            blocks: [
+              {
+                title: "Våpenhvile",
+                icon: "Handshake",
+                content: [
+                  "Våpenhvilen er en spillfase der spillerne kan kjøpe nye kort og endre plasseringen deres på brettet.",
+                  "Våpenhvile oppstår hver gang begge spillerne når startposisjonen.",
+                  "Ved start får hver spiller +6 prox (spillvaluta).",
+                  "Hvis bare én spiller når start, aktiveres våpenhvilen først når den andre spilleren også når start.",
+                  "Etter at våpenhvilen er avsluttet, når kortene er kjøpt og plassert, har alle kort full helse."
+                ]
+              },
+              {
+                title: "Inntekt (valuta)",
+                icon: "Coins",
+                content: [
+                  "En spiller får prox når de passerer eller stopper på feltene Start og Fane.",
+                  "Felt der man må kaste en terning for å få eller miste mynter, kan bare brukes når en spiller stopper på dem."
+                ]
+              },
+              {
+                title: "💰 Kortkostnad etter rang",
+                icon: "CreditCard",
+                content: [
+                  "Alle kort i spillet er delt inn i 4 ranger basert på styrke og verdi:",
+                  "<b>C (grunnleggende) — kostnad: 6</b><br/>Enkle og tilgjengelige kort. De er lette å få tak i hver runde, og hjelper deg med å utvikle deg raskt og fylle hånden.",
+                  "<b>B (standard) — kostnad: 10</b><br/>Balanserte kort på mellomnivå. Kjøpes vanligvis i løpet av én full runde og danner grunnlaget for strategien din.",
+                  "<b>A (sterke) — kostnad: 14</b><br/>Kraftige kort som krever at du sparer ressurser. Gir en tydelig fordel og styrker strategien din.",
+                  "<b>S (elite) — kostnad: 22</b><br/>Sjeldne og svært kraftige kort. Krever store investeringer og kan ofte endre spillets gang."
+                ]
+              },
+              {
+                title: "🏆 Seiersbetingelse",
+                icon: "Trophy",
+                content: [
+                  "Vinneren er spilleren som fortsatt har kort igjen, mens motstanderen ikke har noen igjen før våpenhvilen begynner."
+                ]
+              },
+              {
+                title: "⚔️ Skadetyper",
+                icon: "Swords",
+                content: [
+                  "Det finnes 2 typer skade i spillet: vanlig og magisk.",
+                  "<b>D (Damage) — vanlig skade</b><br/>Når du påfører vanlig skade, mister det valgte fiendekortet helse.",
+                  "<b>M (Magic) — magisk skade</b><br/>Når du påfører magisk skade, gir du skade lik mengden magi, og gjenoppretter samtidig helse til kortet ditt som påførte den magiske skaden.",
+                  "Helsen kan ikke overstige kortets startverdi."
+                ]
+              }
+            ],
             images: [
               "https://pbs.twimg.com/media/HEAoGLmWoAAsgjO?format=jpg&name=large",
               "https://pbs.twimg.com/media/HEAoHOAXAAAbb7H?format=jpg&name=large",
@@ -783,9 +832,9 @@
           team: {
             title: "Our Team", subtitle: "The minds behind the game",
             members: [
-              { name: "Artem", role: "Leader, supportive (site developer)" },
-              { name: "Oleksii", role: "Analytiker, idea developer, Financier" },
-              { name: "Dmytro", role: "Designer, creative, idea developer" }
+              { name: "Artem", role: "Leader, supportive (site developer)", image: "https://pbs.twimg.com/media/HEBnfcDbIAACWGU?format=jpg&name=medium" },
+              { name: "Oleksii", role: "Analytiker, idea developer, Financier", image: "https://pbs.twimg.com/media/HEBnfflW0AAyULe?format=jpg&name=medium" },
+              { name: "Dmytro", role: "Designer, creative, idea developer", image: "https://pbs.twimg.com/media/HEBnfb8aMAAix58?format=jpg&name=medium" }
             ]
           },
           game: { title: "Our Game", status: "Soon", buttonLabel: "Buy and order", notification: "This feature is currently unavailable, and the game is under development!" },
@@ -805,6 +854,55 @@
             teaserTitle: "How to play?", 
             teaserSubtitle: "Game instructions", 
             mobileHint: "Tap the image to open it in full screen and read the instructions",
+            blocks: [
+              {
+                title: "Truce",
+                icon: "Handshake",
+                content: [
+                  "The truce is a game phase during which players can buy new cards and rearrange them on the board.",
+                  "A truce occurs each time both players reach the starting position.",
+                  "At the start, each player receives +6 prox (the in-game currency).",
+                  "If only one player reaches the start, the truce will activate once the second player also reaches the start.",
+                  "After the truce ends, once cards are purchased and placed, all cards have full health."
+                ]
+              },
+              {
+                title: "Currency Gain",
+                icon: "Coins",
+                content: [
+                  "A player receives prox when passing over or landing on the Start and Fane spaces.",
+                  "Spaces where a die must be rolled to gain or lose coins can only be used when a player lands on them."
+                ]
+              },
+              {
+                title: "💰 Card Cost by Rank",
+                icon: "CreditCard",
+                content: [
+                  "All cards in the game are divided into 4 ranks based on their power and value:",
+                  "<b>C (basic) — cost: 6</b><br/>Simple and accessible cards. Easy to obtain each turn, they help you develop quickly and fill your hand.",
+                  "<b>B (standard) — cost: 10</b><br/>Well-balanced mid-tier cards. Usually purchased in one full turn and form the core of your strategy.",
+                  "<b>A (powerful) — cost: 14</b><br/>Strong cards that require saving resources. Provide a noticeable advantage and enhance your strategy.",
+                  "<b>S (elite) — cost: 22</b><br/>Rare and very powerful cards. Require significant investment and can often change the course of the game."
+                ]
+              },
+              {
+                title: "🏆 Victory Condition",
+                icon: "Trophy",
+                content: [
+                  "The winner is the player who still has cards remaining while their opponent has none left before the truce begins."
+                ]
+              },
+              {
+                title: "⚔️ Damage Types",
+                icon: "Swords",
+                content: [
+                  "There are 2 types of damage in the game: normal and magic.",
+                  "<b>D (Damage) — normal damage</b><br/>When dealing normal damage, the selected enemy card loses health.",
+                  "<b>M (Magic) — magic damage</b><br/>When dealing magic damage, you deal damage equal to the amount of magic and also restore health to your card that dealt the magic damage.",
+                  "Health cannot exceed the card’s starting value."
+                ]
+              }
+            ],
             images: [
               "https://pbs.twimg.com/media/HDor64KXMAAdzmK?format=jpg&name=large",
               "https://pbs.twimg.com/media/HDor64KWYAAWXv6?format=jpg&name=large",
@@ -839,9 +937,9 @@
           team: {
             title: "Наша Команда", subtitle: "Ті, хто створюють гру",
             members: [
-              { name: "Артем", role: "Лідер, підтримка (розробник сайту)" },
-              { name: "Олексій", role: "Аналітик, розробник ідей, фінансист" },
-              { name: "Дмитро", role: "Дизайнер, креатив, розробник ідей" }
+              { name: "Артем", role: "Лідер, підтримка (розробник сайту)", image: "https://pbs.twimg.com/media/HEBnfcDbIAACWGU?format=jpg&name=medium" },
+              { name: "Олексій", role: "Аналітик, розробник ідей, фінансист", image: "https://pbs.twimg.com/media/HEBnfflW0AAyULe?format=jpg&name=medium" },
+              { name: "Дмитро", role: "Дизайнер, креатив, розробник ідей", image: "https://pbs.twimg.com/media/HEBnfb8aMAAix58?format=jpg&name=medium" }
             ]
           },
           game: { title: "Наша Гра", status: "Незабаром", buttonLabel: "Купити та замовити", notification: "Ця функція наразі недоступна, оскільки гра знаходиться в розробці!" },
@@ -861,6 +959,55 @@
             teaserTitle: "Як грати?", 
             teaserSubtitle: "Інструкції до гри", 
             mobileHint: "Натисніть на зображення, розгорнувши його в повний ріст і прочитавши інструкцію",
+            blocks: [
+              {
+                title: "Перемир’я",
+                icon: "Handshake",
+                content: [
+                  "Перемир’я — це фаза гри, під час якої гравці можуть купувати нові карти та змінювати їхнє розташування на полі.",
+                  "Перемир’я настає щоразу, коли обидва гравці досягають стартової позиції.",
+                  "На старті кожен гравець отримує +6 prox (ігрова валюта).",
+                  "Якщо лише один гравець досяг старту, перемир’я активується після того, як другий гравець також досягне старту.",
+                  "Після завершення перемир’я, коли карти куплені та розставлені, усі карти мають повне здоров’я."
+                ]
+              },
+              {
+                title: "Отримання валюти",
+                icon: "Coins",
+                content: [
+                  "Гравець отримує prox, коли проходить через клітинки Start та Fane або зупиняється на них.",
+                  "Клітинки, де потрібно кинути кубик, щоб отримати або втратити монети, можна використовувати лише тоді, коли гравець зупиняється на них."
+                ]
+              },
+              {
+                title: "💰 Вартість карток за рангом",
+                icon: "CreditCard",
+                content: [
+                  "У грі всі картки поділяються на 4 ранги залежно від їхньої сили та цінності:",
+                  "<b>C (базові) — вартість: 6</b><br/>Прості та доступні картки. Їх легко отримати кожного ходу, вони допомагають швидко розвиватися та заповнювати руку.",
+                  "<b>B (стандартні) — вартість: 10</b><br/>Збалансовані картки середньої сили. Зазвичай купуються за один повний хід і становлять основу стратегії.",
+                  "<b>A (сильні) — вартість: 14</b><br/>Потужні картки, що потребують накопичення ресурсів. Дають помітну перевагу та підсилюють стратегію гравця.",
+                  "<b>S (елітні) — вартість: 22</b><br/>Рідкісні та дуже сильні картки. Потребують значних вкладень і часто можуть змінити хід гри."
+                ]
+              },
+              {
+                title: "🏆 Умова перемоги",
+                icon: "Trophy",
+                content: [
+                  "Переможцем стає гравець, у якого залишилися карти, тоді як у суперника вони повністю закінчилися до настання перемир’я."
+                ]
+              },
+              {
+                title: "⚔️ Типи шкоди",
+                icon: "Swords",
+                content: [
+                  "У грі існує 2 типи шкоди: звичайна та магічна.",
+                  "<b>D (Damage) — звичайна шкода</b><br/>При нанесенні звичайної шкоди обраній карті суперника зменшується здоров’я.",
+                  "<b>M (Magic) — магічна шкода</b><br/>При нанесенні магічної шкоди ви завдаєте шкоду, що дорівнює кількості магії, а також відновлюєте здоров’я своїй карті, яка завдала цю шкоду.",
+                  "Здоров’я не може перевищувати початкове значення карти."
+                ]
+              }
+            ],
             images: [
               "https://pbs.twimg.com/media/HEA4FJaaoAA4_h2?format=jpg&name=4096x4096",
               "https://pbs.twimg.com/media/HEA4FI7WgAAQ6rB?format=jpg&name=4096x4096",
@@ -1363,9 +1510,13 @@
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {content.team.members.map((member, idx) => (
                 <div key={idx} className="group flex flex-col items-center p-8 bg-stone-900/40 backdrop-blur-sm border border-stone-800 hover:border-amber-900/40 transition-all duration-500 rounded-lg">
-                  <div className="w-32 h-32 mb-6 rounded-sm bg-stone-950/80 border border-stone-800 flex items-center justify-center overflow-hidden relative">
-                    <User size={64} className="text-stone-800 group-hover:text-amber-900/40 transition-colors" />
-                    <div className="absolute inset-0 bg-gradient-to-tr from-amber-950/10 to-transparent"></div>
+                  <div className="w-32 h-32 mb-6 rounded-full bg-stone-950/80 border border-stone-800 flex items-center justify-center overflow-hidden relative shadow-lg">
+                    {member.image ? (
+                      <img src={member.image} alt={member.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" referrerPolicy="no-referrer" />
+                    ) : (
+                      <User size={64} className="text-stone-800 group-hover:text-amber-900/40 transition-colors" />
+                    )}
+                    <div className="absolute inset-0 bg-gradient-to-tr from-amber-950/20 to-transparent pointer-events-none"></div>
                   </div>
                   <h3 className="text-2xl font-heading text-stone-200 mb-2 group-hover:text-amber-500 transition-colors">{member.name}</h3>
                   <p className="text-stone-300 text-sm font-normal text-center leading-relaxed italic tracking-wide max-w-[240px]">{member.role}</p>
@@ -1551,6 +1702,37 @@
               <h1 className="text-4xl md:text-6xl font-heading font-bold text-stone-100 mb-6">{content.instructions.title}</h1>
               <div className="w-24 h-1 bg-amber-700 mx-auto rounded-full mb-6"></div>
             </div>
+            
+            {/* Instruction Blocks */}
+            {content.instructions.blocks && (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
+                {content.instructions.blocks.map((block, idx) => {
+                  const Icon = {
+                    Handshake: Handshake,
+                    Coins: Coins,
+                    CreditCard: CreditCard,
+                    Trophy: Trophy,
+                    Swords: Swords
+                  }[block.icon];
+                  
+                  return (
+                    <div key={idx} className={`bg-stone-900/40 border border-stone-800/60 rounded-2xl p-6 hover:bg-stone-800/40 transition-colors duration-300 ${idx === content.instructions.blocks.length - 1 && content.instructions.blocks.length % 2 !== 0 ? 'md:col-span-2 md:max-w-2xl md:mx-auto w-full' : ''}`}>
+                      <div className="flex items-center gap-4 mb-4">
+                        <div className="w-12 h-12 rounded-xl bg-amber-900/20 flex items-center justify-center border border-amber-700/30 text-amber-500 shrink-0">
+                          {Icon && <Icon size={24} />}
+                        </div>
+                        <h3 className="text-xl font-heading font-bold text-stone-200">{block.title}</h3>
+                      </div>
+                      <div className="space-y-3 text-stone-400 text-sm leading-relaxed">
+                        {block.content.map((paragraph, pIdx) => (
+                          <p key={pIdx} dangerouslySetInnerHTML={{ __html: paragraph }} />
+                        ))}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
             
             <div className="bg-stone-900/60 border border-stone-800 rounded-2xl p-4 md:p-8 shadow-2xl backdrop-blur-sm">
               <p className="md:hidden text-amber-500/80 text-xs text-center mb-4 italic px-2">
