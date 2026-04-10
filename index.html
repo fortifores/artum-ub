@@ -682,7 +682,6 @@
       }
     }
     </script>
-    <link rel="stylesheet" href="/index.css">
   </head>
   <body class="antialiased scroll-smooth">
     <div id="root"></div>
@@ -728,9 +727,9 @@
             title: "Vårt Team", subtitle: "Menneskene bak spillet",
             testedText: "Spillet har blitt testet",
             members: [
-              { name: "Artem", role: "Leder, støttende (nettstedsutvikler)", image: "https://pbs.twimg.com/media/HEBnfcDbIAACWGU?format=jpg&name=medium" },
+              { name: "Artem", role: "Leder, støttende (nettstedsutvikler)", rolePrefix: "Leder, ", roleInteractive: "støttende", roleSuffix: " (nettstedsutvikler)", tooltip: "Hjelp med design, hjelp med idéutvikling.", image: "https://pbs.twimg.com/media/HEBnfcDbIAACWGU?format=jpg&name=medium" },
               { name: "Oleksii", role: "Analytiker, idéutvikler, Finansmann", image: "https://pbs.twimg.com/media/HEBnfflW0AAyULe?format=jpg&name=medium" },
-              { name: "Dmytro", role: "Designer, kreativ, idéutvikler", image: "https://pbs.twimg.com/media/HEBnfb8aMAAix58?format=jpg&name=medium" }
+              { name: "Dmytro", role: "Designer, kreativ, idéutvikler", subRole: "(Midlertidig inaktivt teammedlem)", image: "https://pbs.twimg.com/media/HEBnfb8aMAAix58?format=jpg&name=medium" }
             ]
           },
           game: { title: "Vårt Spill", status: "Snart", buttonLabel: "Kjøp og bestill", notification: "Denne funksjonen er for øyeblikket utilgjengelig, og spillet er under utvikling!" },
@@ -851,9 +850,9 @@
             title: "Our Team", subtitle: "The minds behind the game",
             testedText: "The game has been tested",
             members: [
-              { name: "Artem", role: "Leader, supportive (site developer)", image: "https://pbs.twimg.com/media/HEBnfcDbIAACWGU?format=jpg&name=medium" },
+              { name: "Artem", role: "Leader, supportive (site developer)", rolePrefix: "Leader, ", roleInteractive: "supportive", roleSuffix: " (site developer)", tooltip: "Help with design, help with idea development.", image: "https://pbs.twimg.com/media/HEBnfcDbIAACWGU?format=jpg&name=medium" },
               { name: "Oleksii", role: "Analytiker, idea developer, Financier", image: "https://pbs.twimg.com/media/HEBnfflW0AAyULe?format=jpg&name=medium" },
-              { name: "Dmytro", role: "Designer, creative, idea developer", image: "https://pbs.twimg.com/media/HEBnfb8aMAAix58?format=jpg&name=medium" }
+              { name: "Dmytro", role: "Designer, creative, idea developer", subRole: "(Temporarily inactive team member)", image: "https://pbs.twimg.com/media/HEBnfb8aMAAix58?format=jpg&name=medium" }
             ]
           },
           game: { title: "Our Game", status: "Soon", buttonLabel: "Buy and order", notification: "This feature is currently unavailable, and the game is under development!" },
@@ -974,9 +973,9 @@
             title: "Наша Команда", subtitle: "Ті, хто створюють гру",
             testedText: "Гру було протестовано",
             members: [
-              { name: "Артем", role: "Лідер, підтримка (розробник сайту)", image: "https://pbs.twimg.com/media/HEBnfcDbIAACWGU?format=jpg&name=medium" },
+              { name: "Артем", role: "Лідер, підтримка (розробник сайту)", rolePrefix: "Лідер, ", roleInteractive: "підтримка", roleSuffix: " (розробник сайту)", tooltip: "Допомога в дизайні, допомога в розробці ідей.", image: "https://pbs.twimg.com/media/HEBnfcDbIAACWGU?format=jpg&name=medium" },
               { name: "Олексій", role: "Аналітик, розробник ідей, фінансист", image: "https://pbs.twimg.com/media/HEBnfflW0AAyULe?format=jpg&name=medium" },
-              { name: "Дмитро", role: "Дизайнер, креатив, розробник ідей", image: "https://pbs.twimg.com/media/HEBnfb8aMAAix58?format=jpg&name=medium" }
+              { name: "Дмитро", role: "Дизайнер, креатив, розробник ідей", subRole: "(Тимчасово неактивний член команди)", image: "https://pbs.twimg.com/media/HEBnfb8aMAAix58?format=jpg&name=medium" }
             ]
           },
           game: { title: "Наша Гра", status: "Незабаром", buttonLabel: "Купити та замовити", notification: "Ця функція наразі недоступна, оскільки гра знаходиться в розробці!" },
@@ -1081,6 +1080,8 @@
 
       const Lightbox = ({ data, onClose }) => {
         const [currentIndex, setCurrentIndex] = useState(0);
+        const touchStartX = useRef(null);
+        const touchEndX = useRef(null);
 
         useEffect(() => {
           if (data && data.index !== undefined) {
@@ -1096,7 +1097,7 @@
         const src = images[currentIndex];
 
         const handlePrev = (e) => {
-          e.stopPropagation();
+          if (e && e.stopPropagation) e.stopPropagation();
           setCurrentIndex((prev) => {
             if (prev === 0) return prev;
             const next = prev - 1;
@@ -1106,7 +1107,7 @@
         };
 
         const handleNext = (e) => {
-          e.stopPropagation();
+          if (e && e.stopPropagation) e.stopPropagation();
           setCurrentIndex((prev) => {
             if (prev === images.length - 1) return prev;
             const next = prev + 1;
@@ -1115,13 +1116,41 @@
           });
         };
 
+        const handleTouchStart = (e) => {
+          touchStartX.current = e.targetTouches[0].clientX;
+        };
+
+        const handleTouchMove = (e) => {
+          touchEndX.current = e.targetTouches[0].clientX;
+        };
+
+        const handleTouchEnd = () => {
+          if (!touchStartX.current || !touchEndX.current) return;
+          const distance = touchStartX.current - touchEndX.current;
+          const minSwipeDistance = 50;
+
+          if (distance > minSwipeDistance) {
+            handleNext();
+          } else if (distance < -minSwipeDistance) {
+            handlePrev();
+          }
+
+          touchStartX.current = null;
+          touchEndX.current = null;
+        };
+
         return (
           <div className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-black/95 backdrop-blur-sm p-4 animate-fade-in-up" onClick={onClose}>
             <button className="absolute top-6 right-6 text-stone-400 hover:text-white transition-colors z-[101]" onClick={onClose}>
               <X size={32} />
             </button>
             
-            <div className="relative flex items-center justify-center w-full max-w-7xl flex-1 min-h-0">
+            <div 
+              className="relative flex items-center justify-center w-full max-w-7xl flex-1 min-h-0"
+              onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
+              onTouchEnd={handleTouchEnd}
+            >
               {images.length > 1 && (
                 <button 
                   className="hidden md:flex absolute left-4 z-[101] p-2 text-stone-400 hover:text-white transition-colors bg-black/50 rounded-full hover:bg-black/80 disabled:opacity-30 disabled:cursor-not-allowed"
@@ -1135,8 +1164,9 @@
               <img 
                 src={src} 
                 alt="Full screen view" 
-                className="max-h-[85vh] max-w-full object-contain rounded-sm shadow-2xl border border-stone-800" 
+                className="max-h-[85vh] max-w-full object-contain rounded-sm shadow-2xl border border-stone-800 select-none" 
                 onClick={(e) => e.stopPropagation()} 
+                draggable="false"
               />
 
               {images.length > 1 && (
@@ -1406,6 +1436,7 @@
       const LanguageSwitcher = ({ content, lang, setLang }) => {
         const [isLangOpen, setIsLangOpen] = useState(false);
         const dropdownRef = useRef(null);
+        const flags = { no: "🇳🇴", en: "🇬🇧", ua: "🇺🇦" };
 
         useEffect(() => {
           const handleClickOutside = (event) => {
@@ -1427,12 +1458,15 @@
               <ChevronDown size={12} className={`text-stone-600 transition-transform duration-300 ${isLangOpen ? 'rotate-180' : ''} m-0`} />
             </button>
             {isLangOpen && (
-              <div className="absolute top-full right-0 mt-2 w-32 md:w-40 bg-stone-900 border border-stone-800 rounded-sm shadow-2xl z-[60] dropdown-animate overflow-hidden">
+              <div className="absolute top-full right-0 mt-2 w-36 md:w-44 bg-stone-900 border border-stone-800 rounded-sm shadow-2xl z-[60] dropdown-animate overflow-hidden">
                 {Object.entries(content.footer.langs).map(([key, label]) => (
                   <button key={key} onClick={() => { setLang(key); setIsLangOpen(false); }}
                     className={`flex items-center justify-between w-full px-4 py-3 text-left font-heading text-[10px] md:text-xs uppercase tracking-widest hover:bg-stone-800 transition-colors border-b border-stone-800 last:border-0 ${lang === key ? 'text-amber-500 bg-stone-800/50' : 'text-stone-400'}`}
                   >
-                    <span>{label}</span>
+                    <span className="flex items-center gap-2">
+                      <span className="text-sm">{flags[key]}</span>
+                      {label}
+                    </span>
                     {lang === key && <Check size={12} className="text-amber-600" />}
                   </button>
                 ))}
@@ -1452,9 +1486,9 @@
         }, []);
 
         return (
-          <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-stone-950/90 backdrop-blur-md shadow-lg border-b border-stone-800 py-2' : 'bg-transparent py-4'}`}>
+          <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-stone-950/90 backdrop-blur-md shadow-lg' : 'bg-transparent'}`}>
             {/* Centered Logo */}
-            <div className="absolute inset-x-0 top-0 h-full flex justify-center items-center pointer-events-none">
+            <div className="absolute inset-x-0 top-0 h-16 flex justify-center items-center pointer-events-none">
               <div className="pointer-events-auto flex items-center gap-3 cursor-pointer" onClick={() => { window.location.hash = ''; window.scrollTo(0, 0); }}>
                 <div className="h-10 w-10 md:h-12 md:w-12 rounded-full border border-stone-600 shadow-[0_0_15px_rgba(255,165,0,0.3)] overflow-hidden relative bg-black">
                   <img src={ASSETS.logo} alt="Artum UB Logo" className="w-full h-full object-cover translate-x-[0.5px]" />
@@ -1469,7 +1503,7 @@
             </div>
 
             {/* Left & Right Controls */}
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 md:h-20 flex items-center justify-between relative">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between relative">
               {/* LEFT — Music Player */}
               <div className="flex-1 flex items-center justify-start z-10">
                 <MusicPlayer />
@@ -1551,34 +1585,118 @@
         );
       };
 
-      const Team = ({ content }) => (
-        <section id="team" className="py-24 border-t border-stone-900/50 overflow-hidden relative">
-          <div className="absolute inset-0 bg-stone-950/60 z-[-1]"></div>
-          <div className="absolute right-0 top-0 w-64 h-64 bg-amber-900/5 blur-[120px] rounded-full pointer-events-none"></div>
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <h4 className="text-amber-600 font-heading tracking-[0.2em] text-sm uppercase mb-2">{content.team.subtitle}</h4>
-              <h2 className="text-3xl md:text-5xl font-heading font-bold text-stone-100">{content.team.title}</h2>
-              <div className="w-24 h-1 bg-amber-700 mx-auto rounded-full mt-4"></div>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
-              {content.team.members.map((member, idx) => (
-                <div key={idx} className="group flex flex-col items-center p-8 bg-stone-900/40 backdrop-blur-sm border border-stone-800 hover:border-amber-900/40 transition-all duration-500 rounded-lg">
-                  <div className="w-32 h-32 mb-6 rounded-full bg-stone-950/80 border border-stone-800 flex items-center justify-center overflow-hidden relative shadow-lg">
-                    {member.image ? (
-                      <img src={member.image} alt={member.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" referrerPolicy="no-referrer" />
-                    ) : (
-                      <User size={64} className="text-stone-800 group-hover:text-amber-900/40 transition-colors" />
-                    )}
-                    <div className="absolute inset-0 bg-gradient-to-tr from-amber-950/20 to-transparent pointer-events-none"></div>
-                  </div>
-                  <h3 className="text-2xl font-heading text-stone-200 mb-2 group-hover:text-amber-500 transition-colors">{member.name}</h3>
-                  <p className="text-stone-300 text-sm font-normal text-center leading-relaxed italic tracking-wide max-w-[240px]">{member.role}</p>
-                </div>
-              ))}
-            </div>
+      const Team = ({ content }) => {
+        const [openTooltip, setOpenTooltip] = useState(null);
+        const tooltipRef = useRef(null);
+        const timeoutRef = useRef(null);
+        const isTouch = useRef(false);
 
-            {/* Tested Section */}
+        useEffect(() => {
+          const handleClickOutside = (event) => {
+            if (tooltipRef.current && !tooltipRef.current.contains(event.target)) {
+              setOpenTooltip(null);
+              if (timeoutRef.current) clearTimeout(timeoutRef.current);
+            }
+          };
+          document.addEventListener("mousedown", handleClickOutside);
+          document.addEventListener("touchstart", handleClickOutside);
+          return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+            document.removeEventListener("touchstart", handleClickOutside);
+            if (timeoutRef.current) clearTimeout(timeoutRef.current);
+          };
+        }, []);
+
+        const handleMouseEnter = (idx) => {
+          if (isTouch.current) return;
+          setOpenTooltip(idx);
+          if (timeoutRef.current) clearTimeout(timeoutRef.current);
+        };
+
+        const handleMouseLeave = () => {
+          if (isTouch.current) return;
+          setOpenTooltip(null);
+          if (timeoutRef.current) clearTimeout(timeoutRef.current);
+        };
+
+        const handleTouch = (e, idx) => {
+          isTouch.current = true;
+          e.stopPropagation();
+          if (openTooltip === idx) {
+            setOpenTooltip(null);
+            if (timeoutRef.current) clearTimeout(timeoutRef.current);
+          } else {
+            setOpenTooltip(idx);
+            if (timeoutRef.current) clearTimeout(timeoutRef.current);
+            timeoutRef.current = setTimeout(() => {
+              setOpenTooltip(null);
+            }, 10000);
+          }
+        };
+
+        return (
+          <section id="team" className="py-24 border-t border-stone-900/50 overflow-hidden relative">
+            <div className="absolute inset-0 bg-stone-950/60 z-[-1]"></div>
+            <div className="absolute right-0 top-0 w-64 h-64 bg-amber-900/5 blur-[120px] rounded-full pointer-events-none"></div>
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="text-center mb-16">
+                <h4 className="text-amber-600 font-heading tracking-[0.2em] text-sm uppercase mb-2">{content.team.subtitle}</h4>
+                <h2 className="text-3xl md:text-5xl font-heading font-bold text-stone-100">{content.team.title}</h2>
+                <div className="w-24 h-1 bg-amber-700 mx-auto rounded-full mt-4"></div>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20" ref={tooltipRef}>
+                {content.team.members.map((member, idx) => (
+                  <div key={idx} className={`relative group flex flex-col items-center p-8 bg-stone-900/40 backdrop-blur-sm border border-stone-800 hover:border-amber-900/40 transition-all duration-500 rounded-lg ${openTooltip === idx ? 'z-50' : 'z-10'}`}>
+                    <div className="w-32 h-32 mb-6 rounded-full bg-stone-950/80 border border-stone-800 flex items-center justify-center overflow-hidden relative shadow-lg">
+                      {member.image ? (
+                        <img src={member.image} alt={member.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" referrerPolicy="no-referrer" />
+                      ) : (
+                        <User size={64} className="text-stone-800 group-hover:text-amber-900/40 transition-colors" />
+                      )}
+                      <div className="absolute inset-0 bg-gradient-to-tr from-amber-950/20 to-transparent pointer-events-none"></div>
+                    </div>
+                    <h3 className="text-2xl font-heading text-stone-200 mb-2 group-hover:text-amber-500 transition-colors">{member.name}</h3>
+                    <p className="text-stone-300 text-sm font-normal text-center leading-relaxed italic tracking-wide max-w-[240px]">
+                      {member.roleInteractive ? (
+                        <>
+                          <span>{member.rolePrefix}</span>
+                          <span className="relative inline-block">
+                            <span 
+                              className="underline decoration-amber-500/50 decoration-dashed underline-offset-4 cursor-pointer hover:text-amber-400 transition-colors"
+                              onMouseEnter={() => handleMouseEnter(idx)}
+                              onMouseLeave={handleMouseLeave}
+                              onTouchStart={(e) => handleTouch(e, idx)}
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                if (!isTouch.current) {
+                                  setOpenTooltip(openTooltip === idx ? null : idx);
+                                }
+                              }}
+                            >
+                              {member.roleInteractive}
+                            </span>
+                            {openTooltip === idx && (
+                              <span className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-56 p-3 bg-stone-900 border border-stone-700 rounded-lg shadow-2xl text-xs text-stone-200 z-50 not-italic text-center">
+                                {member.tooltip}
+                              </span>
+                            )}
+                          </span>
+                          <span>{member.roleSuffix}</span>
+                        </>
+                      ) : (
+                        <span>{member.role}</span>
+                      )}
+                    </p>
+                    {member.subRole && (
+                      <p className="text-stone-500 text-xs text-center mt-2 max-w-[240px]">
+                        {member.subRole}
+                      </p>
+                    )}
+                  </div>
+                ))}
+              </div>
+
+              {/* Tested Section */}
             <div className="flex flex-col items-center justify-center pt-16 border-t border-stone-800/50 relative">
               <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-stone-950 px-4">
                 <Check size={24} className="text-amber-600" />
@@ -1600,7 +1718,8 @@
             </div>
           </div>
         </section>
-      );
+        );
+      };
 
       const Features = ({ content }) => {
         const getIcon = (type) => {
@@ -1971,7 +2090,7 @@
             <video className="video-bg" autoPlay muted loop playsInline key={bgVideo}>
               <source src={bgVideo} type="video/mp4" />
             </video>
-            <div className="fixed top-0 left-0 w-full h-16 md:h-20 bg-stone-950 z-40 transition-all duration-300"></div>
+            <div className="fixed top-0 left-0 w-full h-16 md:h-20 bg-stone-950 z-40 transition-all duration-300" style={{ marginTop: '-13px' }}></div>
             <Navbar content={content} lang={lang} setLang={setLang} />
             <main className="relative z-0">
               {currentPage === 'home' ? (
@@ -1997,6 +2116,5 @@
       const root = createRoot(document.getElementById('root'));
       root.render(<App />);
     </script>
-    <script type="module" src="/index.tsx"></script>
   </body>
 </html>
