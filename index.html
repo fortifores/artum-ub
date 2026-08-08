@@ -500,7 +500,7 @@
     <script type="text/babel" data-type="module">
       import React, { useState, useEffect, useRef } from 'react';
       import { createRoot } from 'react-dom/client';
-      import { ChevronDown, Twitter, Instagram, Mail, Scroll, Sword, Ghost, Brain, Sparkles, HandMetal, X, Lock, Globe, User, Check, ChevronLeft, ChevronRight, Handshake, Coins, CreditCard, Trophy, Swords, SunMoon, Gamepad2 } from 'lucide-react';
+      import { ChevronDown, Twitter, Instagram, Mail, Scroll, Sword, Ghost, Brain, Sparkles, HandMetal, X, Lock, Globe, User, Check, ChevronLeft, ChevronRight, Handshake, Coins, CreditCard, Trophy, Swords, SunMoon, Gamepad2, ExternalLink } from 'lucide-react';
 
       const ASSETS = {
         logo: "https://pbs.twimg.com/media/HAejojiXoAEMDas?format=jpg&name=large",
@@ -672,7 +672,11 @@
             modalVercelDesc: "En moderne skyplattform for rask hosting av nettsteder med lynrask lastetid og umiddelbar distribusjon.",
             modalGHPagesTitle: "GitHub Pages",
             modalGHPagesDesc: "En eldre tjeneste for hosting av statiske nettsteder direkte fra et GitHub-depot, som ofte tar lengre tid å oppdatere.",
-            closeBtn: "Skjønner"
+            closeBtn: "Skjønner",
+            redirectDesc1: "Du vil bli omdirigert til nettstedet vårt på den nye adressen: artum-ub.vercel.app",
+            redirectDesc2: "Skal jeg flytte deg?",
+            redirectYes: "Ja",
+            redirectNo: "Nei"
           }
         },
         en: {
@@ -829,7 +833,11 @@
             modalVercelDesc: "A modern cloud platform for fast website hosting with lightning-fast load times and instant deployments.",
             modalGHPagesTitle: "GitHub Pages",
             modalGHPagesDesc: "An older service for hosting static sites directly from a GitHub repository, which often takes longer to update.",
-            closeBtn: "Got it"
+            closeBtn: "Got it",
+            redirectDesc1: "You will be redirected to our website at the new address: artum-ub.vercel.app",
+            redirectDesc2: "Would you like to be moved?",
+            redirectYes: "Yes",
+            redirectNo: "No"
           }
         },
         ua: {
@@ -986,7 +994,11 @@
             modalVercelDesc: "Сучасна хмарна платформа для швидкого хостингу веб-сайтів із блискавичним часом завантаження та миттєвим розгортанням.",
             modalGHPagesTitle: "GitHub Pages",
             modalGHPagesDesc: "Старіший сервіс хостингу статичних сайтів безпосередньо з репозиторію GitHub, який часто потребує більше часу на оновлення.",
-            closeBtn: "Зрозуміло"
+            closeBtn: "Зрозуміло",
+            redirectDesc1: "Ви будете перенаправлені на наш веб-сайт за новою адресою: artum-ub.vercel.app",
+            redirectDesc2: "Перемістити вас?",
+            redirectYes: "Так",
+            redirectNo: "Ні"
           }
         }
       };
@@ -1710,6 +1722,67 @@
         "https://cdn.akamai.steamstatic.com/steamcommunity/public/images/items/1684350/83de58962f68ab5151573386be4901f84f5bd6f2.mp4"
       ];
 
+      const RedirectModal = ({ isOpen, onClose, content }) => {
+        useEffect(() => {
+          if (isOpen) {
+            document.body.style.overflow = 'hidden';
+          } else {
+            document.body.style.overflow = '';
+          }
+          return () => {
+            document.body.style.overflow = '';
+          };
+        }, [isOpen]);
+
+        if (!isOpen) return null;
+
+        const handleYes = () => {
+          window.location.href = "https://artum-ub.vercel.app/";
+        };
+
+        return (
+          <div 
+            className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
+            onClick={onClose}
+          >
+            <div 
+              className="relative max-w-lg w-full bg-stone-950 border border-amber-800/60 rounded-xl p-6 md:p-8 shadow-[0_0_50px_rgba(217,119,6,0.15)] dropdown-animate cursor-default mx-auto text-center"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="flex flex-col items-center gap-6">
+                <div className="w-16 h-16 rounded-full bg-amber-950/40 border border-amber-800/40 flex items-center justify-center text-amber-500">
+                  <ExternalLink size={32} />
+                </div>
+                
+                <h2 className="text-xl md:text-2xl font-heading font-bold text-stone-100 tracking-wide">
+                  {content.banner.modalTitle}
+                </h2>
+                
+                <div className="space-y-4 text-stone-200 font-sans leading-relaxed text-base md:text-lg">
+                  <p>{content.banner.redirectDesc1}</p>
+                  <p className="font-bold text-amber-500">{content.banner.redirectDesc2}</p>
+                </div>
+
+                <div className="flex gap-4 w-full mt-4">
+                  <button 
+                    onClick={onClose}
+                    className="flex-1 px-6 py-3 bg-stone-900 hover:bg-stone-800 border border-stone-800 text-stone-300 rounded-lg font-heading uppercase tracking-widest text-sm transition-all"
+                  >
+                    {content.banner.redirectNo}
+                  </button>
+                  <button 
+                    onClick={handleYes}
+                    className="flex-1 px-6 py-3 bg-gradient-to-r from-amber-800 to-amber-700 hover:from-amber-700 hover:to-amber-600 text-stone-100 rounded-lg font-heading uppercase tracking-widest text-sm transition-all shadow-[0_0_15px_rgba(217,119,6,0.3)] hover:shadow-[0_0_20px_rgba(217,119,6,0.5)] cursor-pointer"
+                  >
+                    {content.banner.redirectYes}
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+      };
+
       const MoveDetailsModal = ({ isOpen, onClose, content }) => {
         useEffect(() => {
           if (isOpen) {
@@ -1890,6 +1963,7 @@
         const [bgVideo] = useState(() => BACKGROUND_VIDEOS[Math.floor(Math.random() * BACKGROUND_VIDEOS.length)]);
         const [isBannerVisible, setIsBannerVisible] = useState(true);
         const [isBannerModalOpen, setIsBannerModalOpen] = useState(false);
+        const [isRedirectModalOpen, setIsRedirectModalOpen] = useState(false);
         
         useEffect(() => {
           const handleHashChange = () => {
@@ -1928,9 +2002,12 @@
               <div className="fixed top-0 left-0 w-full z-[60] bg-gradient-to-r from-amber-950 via-stone-900 to-amber-950 border-b border-amber-800/50 flex items-center justify-center px-4 sm:px-6 h-10 text-stone-200 shadow-md font-heading select-none text-[10px] sm:text-xs">
                 <div className="flex items-center justify-center gap-1.5 sm:gap-2.5">
                   <span className="text-amber-500 font-bold uppercase tracking-wider">⚠️ {content.banner.text}</span>
-                  <a href="https://artum-ub.vercel.app/" className="text-amber-400 hover:text-amber-300 font-bold underline underline-offset-2 transition-colors duration-300">
+                  <button 
+                    onClick={() => setIsRedirectModalOpen(true)}
+                    className="text-amber-400 hover:text-amber-300 font-bold underline underline-offset-2 transition-colors duration-300 cursor-pointer"
+                  >
                     {content.banner.linkText}
-                  </a>
+                  </button>
                   <span className="text-stone-500">|</span>
                   <button 
                     onClick={() => setIsBannerModalOpen(true)}
@@ -1968,6 +2045,7 @@
             <Footer content={content} />
             <Lightbox data={lightboxData} onClose={() => setLightboxData(null)} />
             <MoveDetailsModal isOpen={isBannerModalOpen} onClose={() => setIsBannerModalOpen(false)} content={content} />
+            <RedirectModal isOpen={isRedirectModalOpen} onClose={() => setIsRedirectModalOpen(false)} content={content} />
           </div>
         );
       };
